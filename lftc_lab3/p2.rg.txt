@@ -1,0 +1,17 @@
+int _a = 8; 
+int _b = 3; 
+int _c = 10;
+
+int _max = 0;
+
+if (_a > _b) {
+    _max = _a;
+} else {
+    _max = _b;
+}
+
+if (_c > _max) {
+    _max = _c;
+}
+
+w(_max);

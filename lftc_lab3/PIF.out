@@ -1,0 +1,47 @@
+int - 0
+TokenTypes.IDENTIFIER - (1, 0)
+; - 0
+r - 0
+( - 0
+TokenTypes.IDENTIFIER - (1, 0)
+) - 0
+; - 0
+int - 0
+TokenTypes.IDENTIFIER - (0, 0)
+= - 0
+TokenTypes.CONSTANT - (0, 0)
+; - 0
+while - 0
+( - 0
+TokenTypes.IDENTIFIER - (1, 0)
+!= - 0
+TokenTypes.CONSTANT - (1, 0)
+) - 0
+do - 0
+{ - 0
+int - 0
+TokenTypes.IDENTIFIER - (3, 0)
+; - 0
+r - 0
+( - 0
+TokenTypes.IDENTIFIER - (3, 0)
+) - 0
+; - 0
+TokenTypes.IDENTIFIER - (0, 0)
+= - 0
+TokenTypes.IDENTIFIER - (0, 0)
++ - 0
+TokenTypes.IDENTIFIER - (3, 0)
+; - 0
+TokenTypes.IDENTIFIER - (1, 0)
+= - 0
+TokenTypes.IDENTIFIER - (1, 0)
+- - 0
+TokenTypes.CONSTANT - (2, 0)
+; - 0
+} - 0
+w - 0
+( - 0
+TokenTypes.IDENTIFIER - (0, 0)
+) - 0
+; - 0

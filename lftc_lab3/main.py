@@ -1,13 +1,22 @@
-from analyzer import LexicalAnalyzer
+from test.tests_hashtable import TestHashTable
+from test.tests_symbol_table_constants import TestSymbolTableConstants
+from test.tests_symbol_table_identifiers import TestSymbolTableIdentifiers
 
-scan = LexicalAnalyzer('p1.rg.txt', 'token.in')
-scan.scan_file()
 
-scan = LexicalAnalyzer('p2.rg.txt', 'token.in')
-scan.scan_file()
+def run_tests():
+    test_table = TestHashTable()
+    test_table.test_hashtable()
+    
+    test_table = TestSymbolTableConstants()
+    test_table.test_symbol_table_constants()
+    
+    test_table = TestSymbolTableIdentifiers()
+    test_table.test_symbol_table_identifiers()
 
-scan = LexicalAnalyzer('p3.rg.txt', 'token.in')
-scan.scan_file()
-
-scan = LexicalAnalyzer('perr.rg.txt', 'token.in')
-scan.scan_file()
+def main():
+    print("Tests started...")
+    run_tests()
+    print("Tests passed!")
+    
+if __name__ == "__main__":
+    main()

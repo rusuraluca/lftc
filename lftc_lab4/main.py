@@ -1,5 +1,7 @@
 from analyzer import LexicalAnalyzer
 
+
+# Test that the analyzer works
 scan = LexicalAnalyzer('p1.txt', 'token.in')
 scan.scan_file()
 

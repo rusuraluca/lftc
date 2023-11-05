@@ -2,6 +2,11 @@ from hashtable import HashTable
 
 
 class SymbolTableConstants:
+    """ Symbol table for constants
+
+    Attributes:
+        symboltable (HashTable): HashTable for constants
+    """
     def __init__(self):
         self.symboltable = HashTable()
 
@@ -16,6 +21,11 @@ class SymbolTableConstants:
 
 
 class SymbolTableIdentifiers:
+    """ Symbol table for identifiers
+    
+    Attributes:
+        symboltable (HashTable): HashTable for identifiers
+    """
     def __init__(self): 
         self.symboltable = HashTable()
 

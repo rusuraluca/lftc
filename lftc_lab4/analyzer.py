@@ -4,23 +4,23 @@ from symboltables import SymbolTableConstants, SymbolTableIdentifiers
 
 
 class TokenTypes(Enum):
-    RESERVED_WORD = 1
-    SEPARATOR = 2
-    OPERATOR = 3
-    IDENTIFIER = 4
-    CONSTANT = 5
+    IDENTIFIER = 0
+    CONSTANT = 1
+    OPERATOR = 2
+    RESERVED_WORD = 3
+    SEPARATOR = 4
     
-    
-class LexicalAnalyzer:
+
+class LexicalAnalyzer():
     def __init__(self, filename, token_file):
         self.filename = filename
         self.token_file = token_file
         self.constant_table = SymbolTableConstants()
         self.identifiers_table = SymbolTableIdentifiers()
         self.pif = []
-        self.reserved_words = []
-        self.operators = []
-        self.separators = []
+        self.reserved_words = {}
+        self.operators = {}
+        self.separators = {}
         self.get_tokens()
         self.constants_count = 0
 
@@ -29,37 +29,64 @@ class LexicalAnalyzer:
             line_count = 0
             for line in program:
                 line_count += 1
-                line = line.replace('\n', '')
-                operators_and_separators = '(==|=|!=|\+=|-=|\*=|\/=|<=|>=|[\+\-\*=\/<>!;\[\]\{\}\(\),;]|\|\||&&)'
-                
-                for word_with_sep_and_op in line.split():
-                    for word in re.split(operators_and_separators, word_with_sep_and_op):
-                        if word == '':
-                            continue
+                line = line.rstrip('\n')
+                operators_and_separators = r'(;|==|=|!=|\+=|-=|\*=|\/=|<=|>=|[\+\-\*=\/<>!;\[\]\{\}\(\),;]|\|\||&&)'
+               
+                for word_with_sep_and_op in re.split(operators_and_separators, line):
+                    is_string = False
+                    
+                    if (word_with_sep_and_op.startswith('"') or word_with_sep_and_op.startswith(' "')) and word_with_sep_and_op.endswith('"'):
+                        is_string = True
+                        word_with_sep_and_op = word_with_sep_and_op.replace(' ', '').replace('"', '')
+                        if self.constant_table.get_position(word_with_sep_and_op) is None:
+                            self.constant_table.add_constant(word_with_sep_and_op, self.constants_count)
+                            self.pif.append((TokenTypes.CONSTANT.value, self.constant_table.get_position(word_with_sep_and_op)))
+                            self.constants_count += 1
                         
-                        if word in self.reserved_words or word in self.operators or word in self.separators:
-                            self.pif.append((word, 0))
+                    elif (word_with_sep_and_op.startswith("'") or word_with_sep_and_op.startswith(" '")) and word_with_sep_and_op.endswith("'"):
+                        is_string = True
+                        word_with_sep_and_op = word_with_sep_and_op.replace(' ', '').replace("'", '')
+                        if self.constant_table.get_position(word_with_sep_and_op) is None:
+                            self.constant_table.add_constant(word_with_sep_and_op, self.constants_count)
+                            self.pif.append((TokenTypes.CONSTANT.value, self.constant_table.get_position(word_with_sep_and_op)))
+                            self.constants_count += 1
+                    
+                    if not is_string:  
+                        for word in word_with_sep_and_op.split():  
+                            if word == '':
+                                continue
                             
-                        elif self.is_identifier(word):
-                            if self.identifiers_table.get_position(word) is None:
-                                self.identifiers_table.add_identifier(word, None)
-                            self.pif.append((TokenTypes.IDENTIFIER, self.identifiers_table.get_position(word)))
+                            if word in self.reserved_words.keys():
+                                self.pif.append((self.reserved_words.get(word), 0))
+                                
+                            elif word in self.operators.keys():
+                                self.pif.append((self.operators.get(word), 0))
                             
-                        elif self.is_constant(word):
-                            if self.constant_table.get_position(word) is None:
-                                self.constant_table.add_constant(self.constants_count, word)
-                                self.constants_count += 1
-                            self.pif.append((TokenTypes.CONSTANT, self.constant_table.get_position(self.constants_count - 1)))
-                            
-                        else:
-                            print(f'Lexical error at line {line_count}')
-                            return
+                            elif word in self.separators.keys():
+                                self.pif.append((self.separators.get(word), 0))
+                                    
+                            elif self.is_constant(word):
+                                if self.constant_table.get_position(word) is None:
+                                    self.constant_table.add_constant(word, self.constants_count)
+                                    self.pif.append((TokenTypes.CONSTANT.value, self.constant_table.get_position(word)))
+                                    self.constants_count += 1
+                                
+                            elif self.is_identifier(word):
+                                if self.identifiers_table.get_position(word) is None:
+                                    self.identifiers_table.add_identifier(word, None)
+                                self.pif.append((TokenTypes.IDENTIFIER.value, self.identifiers_table.get_position(word)))
+                                
+                            else:
+                                print(f'Lexical error at line {line_count}\n')
+                                return
                         
             print('Lexically correct')
             
         with open('ST.out', 'w') as output:
             print(str(self.identifiers_table.symboltable))
             output.write(str(self.identifiers_table.symboltable))
+            print(str(self.constant_table.symboltable))
+            output.write(str(self.constant_table.symboltable))
             
         with open('PIF.out', 'w') as output:
             for key, value in self.pif:
@@ -67,6 +94,7 @@ class LexicalAnalyzer:
 
     def get_tokens(self):
         should_add_in = TokenTypes.RESERVED_WORD
+        line_no = 2
         with open(self.token_file, 'r') as token_file:
             for line in token_file:
                 line = line.replace('\n', '')
@@ -83,15 +111,20 @@ class LexicalAnalyzer:
                     continue
                 
                 if should_add_in == TokenTypes.RESERVED_WORD:
-                    self.reserved_words.append(line)
+                    self.reserved_words[line] = line_no
                     
                 if should_add_in == TokenTypes.OPERATOR:
-                    self.operators.append(line)
+                    self.operators[line] = line_no
                     
                 if should_add_in == TokenTypes.SEPARATOR:
-                    self.separators.append(line)
+                    self.separators[line] = line_no
+                    
+                line_no += 1
 
     def is_identifier(self, string):
+        if len(string) == 1:
+            return False
+        
         if string[0] != '_':
             return False
     
@@ -104,7 +137,7 @@ class LexicalAnalyzer:
     def is_constant(self, string):
         if string[0] == '0' and len(string) > 1:
             return False
-        
+
         if string[0] == '0' and len(string) == 1:
             return True
         

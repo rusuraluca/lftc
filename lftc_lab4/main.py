@@ -1,13 +1,16 @@
 from analyzer import LexicalAnalyzer
 
-scan = LexicalAnalyzer('p1.rg.txt', 'token.in')
+scan = LexicalAnalyzer('p1.txt', 'token.in')
 scan.scan_file()
 
-scan = LexicalAnalyzer('p2.rg.txt', 'token.in')
+scan = LexicalAnalyzer('p2.txt', 'token.in')
 scan.scan_file()
 
-scan = LexicalAnalyzer('p3.rg.txt', 'token.in')
+scan = LexicalAnalyzer('p3.txt', 'token.in')
 scan.scan_file()
 
-scan = LexicalAnalyzer('perr.rg.txt', 'token.in')
+scan = LexicalAnalyzer('perr.txt', 'token.in')
+scan.scan_file()
+
+scan = LexicalAnalyzer('p4.txt', 'token.in')
 scan.scan_file()

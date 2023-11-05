@@ -4,13 +4,13 @@ int _c = 10;
 
 int _max = 0;
 
-if (_a > _b) {
+if (_a > _b) do {
     _max = _a;
-} else {
+} else do {
     _max = _b;
 }
 
-if (_c > _max) {
+if (_c > _max) do {
     _max = _c;
 }
 

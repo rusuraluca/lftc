@@ -10,9 +10,9 @@ class Node:
 
 class HashTable:
     def __init__(self):
-        self.capacity = 2
+        self.capacity = 10
         self.elmnt_no = 0
-        self.elmnt_list = [None] * 2
+        self.elmnt_list = [None] * 10
     
     def hash(self, value):
         if isinstance(value, int):
@@ -73,6 +73,6 @@ class HashTable:
         string_builder = ""
         for elmnt in self.elmnt_list:
             while elmnt is not None:
-                string_builder += f"{elmnt.key} - {elmnt.value}\n"
+                string_builder += f"{elmnt.key} - {self.get_position(elmnt.key)} \n"
                 elmnt = elmnt.next
         return string_builder

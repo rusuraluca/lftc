@@ -4,6 +4,8 @@ from symboltables import SymbolTableConstants, SymbolTableIdentifiers
 
 
 class TokenTypes(Enum):
+    """ Enum for defining the token types
+    """
     IDENTIFIER = 0
     CONSTANT = 1
     OPERATOR = 2
@@ -12,6 +14,20 @@ class TokenTypes(Enum):
     
 
 class LexicalAnalyzer():
+    """ class LexicalAnalyzer for implementing the scanning algorithm
+    
+    Methods:
+        __init__:
+            - initializes the analyzer with the source code file and token file paths.
+        - scan_file:
+            - analyzes the source code, generates PIF, and manages symbol tables
+        - get_tokens:
+            - parses the token definitions from the token file and populates dictionaries for reserved words, operators, and separators
+        - is_identifier(string):
+            - checks if a string is a valid identifier
+        - is_constant(string):
+            - checks if a string is a valid constant
+    """
     def __init__(self, filename, token_file):
         self.filename = filename
         self.token_file = token_file

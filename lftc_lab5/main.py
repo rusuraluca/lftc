@@ -11,8 +11,11 @@ scan.scan_file()
 scan = LexicalAnalyzer('p3.txt', 'token.in')
 scan.scan_file()
 
-scan = LexicalAnalyzer('perr.txt', 'token.in')
+scan = LexicalAnalyzer('p4.txt', 'token.in')
 scan.scan_file()
 
-scan = LexicalAnalyzer('p4.txt', 'token.in')
+scan = LexicalAnalyzer('p5.txt', 'token.in')
+scan.scan_file()
+
+scan = LexicalAnalyzer('perr.txt', 'token.in')
 scan.scan_file()

@@ -1,4 +1,4 @@
-string _unu="a bc";
+string _unu = "abc";
 string _doi = "ab";
 char _trei = 'a';
 w(_unu);

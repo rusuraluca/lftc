@@ -12,14 +12,13 @@ class Grammar:
             S = file.readline().split('=')[1].replace(" ", "").strip()
             file.readline()
             P = Grammar.parse_productions([line.strip() for line in file])
-
             if not Grammar.validate(N, E, S, P):
                 return f"Grammar in {filename} is not valid"
 
             return Grammar(N, E, S, P)
 
     def parse_line(line):
-        return line.split('=')[1].strip().split()
+        return line.split('=', maxsplit=1)[1].strip().split()
 
     def parse_productions(lines):
         P = {}
@@ -28,7 +27,7 @@ class Grammar:
                 continue
             lhs, rhs = line.split('->')
             lhs = lhs.strip()
-            rhs_list = rhs.strip().replace(" ", "").split('|')
+            rhs_list = rhs.strip().split('|')
             if lhs in P:
                 P[lhs].append(rhs_list)
             else:
@@ -43,10 +42,12 @@ class Grammar:
             if k not in N:
                 return False
 
-            for l in v:
-                for production in l:
-                    for symbol in production:
-                        if symbol not in N and symbol not in E:
+            for production in v:
+                for symbol in production:
+                    symbol = symbol.strip().split()
+                    for s in symbol:
+                        if s not in N and s not in E:
+                            print(s)
                             return False
 
         return True

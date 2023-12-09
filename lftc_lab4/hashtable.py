@@ -53,9 +53,9 @@ class HashTable:
             - returns the index of the list where the key-value pair with the given key is stored
     """
     def __init__(self):
-        self.capacity = 10
+        self.capacity = 3
         self.elmnt_no = 0
-        self.elmnt_list = [None] * 10
+        self.elmnt_list = [None] * 3
     
     def hash(self, value):
         if isinstance(value, int):

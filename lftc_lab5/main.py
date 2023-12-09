@@ -1,21 +1,19 @@
-from analyzer import LexicalAnalyzer
+from grammar import Grammar
 
 
-# Test that the analyzer works
-scan = LexicalAnalyzer('p1.txt', 'token.in')
-scan.scan_file()
+g = Grammar.from_file('lftc_lab6/g1.txt')
+print(g)
+print(g.get_nonterminal_productions('S'))
+print(g.is_cfg())
 
-scan = LexicalAnalyzer('p2.txt', 'token.in')
-scan.scan_file()
 
-scan = LexicalAnalyzer('p3.txt', 'token.in')
-scan.scan_file()
+g = Grammar.from_file('lftc_lab6/g2.txt')
+print(g)
+print(g.get_nonterminal_productions('start'))
+print(g.is_cfg())
 
-scan = LexicalAnalyzer('p4.txt', 'token.in')
-scan.scan_file()
 
-scan = LexicalAnalyzer('p5.txt', 'token.in')
-scan.scan_file()
-
-scan = LexicalAnalyzer('perr.txt', 'token.in')
-scan.scan_file()
+g = Grammar.from_file('lftc_lab6/g3.txt')
+print(g)
+print(g.get_nonterminal_productions('A'))
+print(g.is_cfg())

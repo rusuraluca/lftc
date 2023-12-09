@@ -1,22 +1,18 @@
-from test.tests_hashtable import TestHashTable
-from test.tests_symbol_table_constants import TestSymbolTableConstants
-from test.tests_symbol_table_identifiers import TestSymbolTableIdentifiers
+from analyzer import LexicalAnalyzer
 
 
-def run_tests():
-    test_table = TestHashTable()
-    test_table.test_hashtable()
-    
-    test_table = TestSymbolTableConstants()
-    test_table.test_symbol_table_constants()
-    
-    test_table = TestSymbolTableIdentifiers()
-    test_table.test_symbol_table_identifiers()
+# Test that the analyzer works
+scan = LexicalAnalyzer('p1.txt', 'token.in')
+scan.scan_file()
 
-def main():
-    print("Tests started...")
-    run_tests()
-    print("Tests passed!")
-    
-if __name__ == "__main__":
-    main()
+scan = LexicalAnalyzer('p2.txt', 'token.in')
+scan.scan_file()
+
+scan = LexicalAnalyzer('p3.txt', 'token.in')
+scan.scan_file()
+
+scan = LexicalAnalyzer('perr.txt', 'token.in')
+scan.scan_file()
+
+scan = LexicalAnalyzer('p4.txt', 'token.in')
+scan.scan_file()

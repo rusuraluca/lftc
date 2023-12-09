@@ -27,11 +27,12 @@ class Grammar:
             lhs, rhs = line.split('->')
             lhs = lhs.strip()
             rhs_list = rhs.strip().split('|')
-            rhs_list = [rhs.strip() for rhs in rhs_list]
-            if lhs in P:
-                P[lhs].append(rhs_list)
-            else:
-                P[lhs] = [rhs_list]
+            rhs_list = [rhs.strip().split(' ') for rhs in rhs_list]
+            for rhs in rhs_list:
+                if lhs in P:
+                    P[lhs].append(rhs)
+                else:
+                    P[lhs] = [rhs]
         return P
 
     def validate(N, E, S, P):
@@ -42,13 +43,10 @@ class Grammar:
             if k not in N:
                 return False
 
-            for production in v:
-                for symbol in production:
-                    symbol = symbol.split()
-                    for s in symbol:
-                        if s not in N and s not in E:
-                            print(s)
-                            return False
+            for productions in v:
+                for symbol in productions:
+                    if symbol not in N and symbol not in E:
+                        return False
 
         return True
 

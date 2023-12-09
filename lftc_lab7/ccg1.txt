@@ -1,0 +1,32 @@
+State:
+ Item: S -> ['a', 'S'], dot - 0
+ Item: S0 -> ['S'], dot - 0
+ Item: S -> ['a', 'S', 'b', 'S'], dot - 0
+ Item: S -> ['C'], dot - 0
+ Item: C -> ['c'], dot - 0
+State:
+ Item: S -> ['C'], dot - 1
+State:
+ Item: S -> ['a', 'S'], dot - 0
+ Item: S -> ['a', 'S', 'b', 'S'], dot - 1
+ Item: S -> ['a', 'S', 'b', 'S'], dot - 0
+ Item: S -> ['C'], dot - 0
+ Item: S -> ['a', 'S'], dot - 1
+ Item: C -> ['c'], dot - 0
+State:
+ Item: C -> ['c'], dot - 1
+State:
+ Item: S0 -> ['S'], dot - 1
+State:
+ Item: C -> ['c'], dot - 1
+State:
+ Item: S -> ['a', 'S', 'b', 'S'], dot - 2
+ Item: S -> ['a', 'S'], dot - 2
+State:
+ Item: S -> ['a', 'S'], dot - 0
+ Item: S -> ['a', 'S', 'b', 'S'], dot - 0
+ Item: S -> ['a', 'S', 'b', 'S'], dot - 3
+ Item: S -> ['C'], dot - 0
+ Item: C -> ['c'], dot - 0
+State:
+ Item: S -> ['a', 'S', 'b', 'S'], dot - 4

@@ -37,6 +37,12 @@ class State:
         items = '\n '.join([str(item) for item in self.items])
         return f"State:\n {items}"
 
+    def __eq__(self, other):
+        return self.items == other.items
+
+    def __hash__(self):
+        return hash(tuple(self.items))
+
 
 class Item:
     def __init__(self, left_hand_side, right_hand_side, position_for_dot):
@@ -55,3 +61,13 @@ class Item:
 
     def __str__(self):
         return f"Item: {self.left_hand_side} -> {self.right_hand_side}, dot - {self.position_for_dot}"
+
+    def __eq__(self, other):
+        return (
+            self.left_hand_side == other.left_hand_side
+            and self.right_hand_side == other.right_hand_side
+            and self.position_for_dot == other.position_for_dot
+        )
+
+    def __hash__(self):
+        return hash((self.left_hand_side, tuple(self.right_hand_side), self.position_for_dot))

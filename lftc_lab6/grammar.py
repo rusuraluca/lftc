@@ -13,7 +13,7 @@ class Grammar:
 
             self.non_terminals = N
             self.terminals = E
-            self.start_symbol = S
+            self.starting_symbol = S
             self.productions = P
 
     def parse_line(line):
@@ -73,14 +73,14 @@ class Grammar:
     def set_productions(self, productions):
         self.productions = productions
 
-    def get_start_symbol(self):
-        return self.start_symbol
+    def get_starting_symbol(self):
+        return self.starting_symbol
 
-    def set_start_symbol(self, start_symbol):
-        self.start_symbol = start_symbol
+    def set_starting_symbol(self, starting_symbol):
+        self.starting_symbol = starting_symbol
 
     def get_all_symbols(self):
         return list(self.get_non_terminals()) + list(self.get_terminals())
 
     def __str__(self) -> str:
-        return f"(N)Non-terminals = {self.get_non_terminals()}\n(E)Terminals = {self.get_terminals()}\n(S)Starting symbol = {self.get_start_symbol()}\n(P)Productions = {self.get_productions()}\n"
+        return f"(N)Non-terminals = {self.get_non_terminals()}\n(E)Terminals = {self.get_terminals()}\n(S)Starting symbol = {self.get_starting_symbol()}\n(P)Productions = {self.get_productions()}\n"

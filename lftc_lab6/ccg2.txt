@@ -1,1992 +1,697 @@
-State:
- Item: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 0
- Item: struct_stmt -> ['while_stmt'], dot - 0
- Item: simple_stmt -> ['io_stmt'], dot - 0
- Item: S0 -> ['S'], dot - 0
- Item: stmt -> ['struct_stmt'], dot - 0
- Item: const_decl -> ['constant', '#', 'type', 'identifier', '=', 'expression', ';'], dot - 0
- Item: simple_stmt -> ['assign_stmt'], dot - 0
- Item: io_stmt -> ['w', '(', 'string_exp', ')', ';'], dot - 0
- Item: stmt_list -> ['stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 0
- Item: decl -> ['const_decl'], dot - 0
- Item: assign_stmt -> ['identifier', '=', 'expression', ';'], dot - 0
- Item: stmt_list -> ['stmt', 'stmt_list'], dot - 0
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 0
- Item: decl_list -> ['decl'], dot - 0
- Item: decl_list -> ['decl', 'decl_list'], dot - 0
- Item: S -> ['decl_list', 'S'], dot - 0
- Item: stmt -> ['simple_stmt'], dot - 0
- Item: struct_stmt -> ['if_stmt'], dot - 0
- Item: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}'], dot - 0
- Item: S -> ['stmt_list', 'S'], dot - 0
- Item: decl -> ['var_decl'], dot - 0
- Item: var_decl -> ['#', 'type', 'identifier', ';'], dot - 0
-State:
- Item: const_decl -> ['constant', '#', 'type', 'identifier', '=', 'expression', ';'], dot - 1
-State:
- Item: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 0
- Item: simple_stmt -> ['io_stmt'], dot - 0
- Item: struct_stmt -> ['while_stmt'], dot - 0
- Item: stmt -> ['struct_stmt'], dot - 0
- Item: const_decl -> ['constant', '#', 'type', 'identifier', '=', 'expression', ';'], dot - 0
- Item: simple_stmt -> ['assign_stmt'], dot - 0
- Item: io_stmt -> ['w', '(', 'string_exp', ')', ';'], dot - 0
- Item: stmt_list -> ['stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 0
- Item: decl -> ['const_decl'], dot - 0
- Item: assign_stmt -> ['identifier', '=', 'expression', ';'], dot - 0
- Item: stmt_list -> ['stmt', 'stmt_list'], dot - 0
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 0
- Item: decl_list -> ['decl'], dot - 0
- Item: decl_list -> ['decl', 'decl_list'], dot - 0
- Item: S -> ['stmt_list', 'S'], dot - 1
- Item: S -> ['decl_list', 'S'], dot - 0
- Item: stmt -> ['simple_stmt'], dot - 0
- Item: struct_stmt -> ['if_stmt'], dot - 0
- Item: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}'], dot - 0
- Item: S -> ['stmt_list', 'S'], dot - 0
- Item: decl -> ['var_decl'], dot - 0
- Item: var_decl -> ['#', 'type', 'identifier', ';'], dot - 0
-State:
- Item: io_stmt -> ['w', '(', 'string_exp', ')', ';'], dot - 1
-State:
- Item: simple_stmt -> ['io_stmt'], dot - 1
-State:
- Item: stmt_list -> ['stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 0
- Item: struct_stmt -> ['if_stmt'], dot - 0
- Item: stmt -> ['simple_stmt'], dot - 0
- Item: struct_stmt -> ['while_stmt'], dot - 0
- Item: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}'], dot - 0
- Item: simple_stmt -> ['io_stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 0
- Item: stmt_list -> ['stmt', 'stmt_list'], dot - 1
- Item: stmt -> ['struct_stmt'], dot - 0
- Item: assign_stmt -> ['identifier', '=', 'expression', ';'], dot - 0
- Item: stmt_list -> ['stmt', 'stmt_list'], dot - 0
- Item: simple_stmt -> ['assign_stmt'], dot - 0
- Item: io_stmt -> ['w', '(', 'string_exp', ')', ';'], dot - 0
- Item: stmt_list -> ['stmt'], dot - 1
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 0
-State:
- Item: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';'], dot - 0
- Item: decl_list -> ['decl'], dot - 0
- Item: decl_list -> ['decl', 'decl_list'], dot - 0
- Item: decl -> ['const_decl'], dot - 0
- Item: decl_list -> ['decl'], dot - 1
- Item: const_decl -> ['constant', '#', 'type', 'identifier', '=', 'expression', ';'], dot - 0
- Item: decl -> ['var_decl'], dot - 0
- Item: decl_list -> ['decl', 'decl_list'], dot - 1
- Item: var_decl -> ['#', 'type', 'identifier', ';'], dot - 0
-State:
- Item: struct_stmt -> ['if_stmt'], dot - 1
-State:
- Item: simple_stmt -> ['assign_stmt'], dot - 1
-State:
- Item: stmt -> ['simple_stmt'], dot - 1
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: condition -> ['expression', 'relation', 'expression'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}'], dot - 1
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 0
- Item: simple_stmt -> ['io_stmt'], dot - 0
- Item: struct_stmt -> ['while_stmt'], dot - 0
- Item: stmt -> ['struct_stmt'], dot - 0
- Item: const_decl -> ['constant', '#', 'type', 'identifier', '=', 'expression', ';'], dot - 0
- Item: simple_stmt -> ['assign_stmt'], dot - 0
- Item: io_stmt -> ['w', '(', 'string_exp', ')', ';'], dot - 0
- Item: stmt_list -> ['stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 0
- Item: decl -> ['const_decl'], dot - 0
- Item: assign_stmt -> ['identifier', '=', 'expression', ';'], dot - 0
- Item: stmt_list -> ['stmt', 'stmt_list'], dot - 0
- Item: S -> ['decl_list', 'S'], dot - 1
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 0
- Item: decl_list -> ['decl'], dot - 0
- Item: decl_list -> ['decl', 'decl_list'], dot - 0
- Item: S -> ['decl_list', 'S'], dot - 0
- Item: stmt -> ['simple_stmt'], dot - 0
- Item: struct_stmt -> ['if_stmt'], dot - 0
- Item: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}'], dot - 0
- Item: S -> ['stmt_list', 'S'], dot - 0
- Item: decl -> ['var_decl'], dot - 0
- Item: var_decl -> ['#', 'type', 'identifier', ';'], dot - 0
-State:
- Item: stmt -> ['struct_stmt'], dot - 1
-State:
- Item: decl -> ['const_decl'], dot - 1
-State:
- Item: struct_stmt -> ['while_stmt'], dot - 1
-State:
- Item: decl -> ['var_decl'], dot - 1
-State:
- Item: assign_stmt -> ['identifier', '=', 'expression', ';'], dot - 1
-State:
- Item: type_const -> ['bool'], dot - 0
- Item: array_decl -> ['[', 'type_const', ']'], dot - 0
- Item: type -> ['type_const'], dot - 0
- Item: type -> ['array_decl'], dot - 0
- Item: var_decl -> ['#', 'type', 'identifier', ';'], dot - 1
- Item: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';'], dot - 1
- Item: type_const -> ['string'], dot - 0
- Item: type_const -> ['int'], dot - 0
-State:
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 1
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 1
- Item: condition -> ['expression', 'relation', 'expression'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 1
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: S0 -> ['S'], dot - 1
-State:
- Item: type_const -> ['bool'], dot - 0
- Item: array_decl -> ['[', 'type_const', ']'], dot - 0
- Item: type -> ['type_const'], dot - 0
- Item: type -> ['array_decl'], dot - 0
- Item: type_const -> ['string'], dot - 0
- Item: type_const -> ['int'], dot - 0
- Item: const_decl -> ['constant', '#', 'type', 'identifier', '=', 'expression', ';'], dot - 2
-State:
- Item: io_stmt -> ['w', '(', 'string_exp', ')', ';'], dot - 1
-State:
- Item: simple_stmt -> ['io_stmt'], dot - 1
-State:
- Item: stmt_list -> ['stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 0
- Item: struct_stmt -> ['if_stmt'], dot - 0
- Item: stmt -> ['simple_stmt'], dot - 0
- Item: struct_stmt -> ['while_stmt'], dot - 0
- Item: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}'], dot - 0
- Item: simple_stmt -> ['io_stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 0
- Item: stmt_list -> ['stmt', 'stmt_list'], dot - 1
- Item: stmt -> ['struct_stmt'], dot - 0
- Item: assign_stmt -> ['identifier', '=', 'expression', ';'], dot - 0
- Item: stmt_list -> ['stmt', 'stmt_list'], dot - 0
- Item: simple_stmt -> ['assign_stmt'], dot - 0
- Item: io_stmt -> ['w', '(', 'string_exp', ')', ';'], dot - 0
- Item: stmt_list -> ['stmt'], dot - 1
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 0
-State:
- Item: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';'], dot - 0
- Item: decl_list -> ['decl'], dot - 0
- Item: decl_list -> ['decl', 'decl_list'], dot - 0
- Item: decl -> ['const_decl'], dot - 0
- Item: decl_list -> ['decl'], dot - 1
- Item: const_decl -> ['constant', '#', 'type', 'identifier', '=', 'expression', ';'], dot - 0
- Item: decl -> ['var_decl'], dot - 0
- Item: decl_list -> ['decl', 'decl_list'], dot - 1
- Item: var_decl -> ['#', 'type', 'identifier', ';'], dot - 0
-State:
- Item: struct_stmt -> ['if_stmt'], dot - 1
-State:
- Item: simple_stmt -> ['assign_stmt'], dot - 1
-State:
- Item: stmt -> ['simple_stmt'], dot - 1
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: condition -> ['expression', 'relation', 'expression'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}'], dot - 1
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 0
- Item: simple_stmt -> ['io_stmt'], dot - 0
- Item: struct_stmt -> ['while_stmt'], dot - 0
- Item: stmt -> ['struct_stmt'], dot - 0
- Item: const_decl -> ['constant', '#', 'type', 'identifier', '=', 'expression', ';'], dot - 0
- Item: simple_stmt -> ['assign_stmt'], dot - 0
- Item: io_stmt -> ['w', '(', 'string_exp', ')', ';'], dot - 0
- Item: stmt_list -> ['stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 0
- Item: decl -> ['const_decl'], dot - 0
- Item: assign_stmt -> ['identifier', '=', 'expression', ';'], dot - 0
- Item: stmt_list -> ['stmt', 'stmt_list'], dot - 0
- Item: S -> ['decl_list', 'S'], dot - 1
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 0
- Item: decl_list -> ['decl'], dot - 0
- Item: decl_list -> ['decl', 'decl_list'], dot - 0
- Item: S -> ['decl_list', 'S'], dot - 0
- Item: stmt -> ['simple_stmt'], dot - 0
- Item: struct_stmt -> ['if_stmt'], dot - 0
- Item: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}'], dot - 0
- Item: S -> ['stmt_list', 'S'], dot - 0
- Item: decl -> ['var_decl'], dot - 0
- Item: var_decl -> ['#', 'type', 'identifier', ';'], dot - 0
-State:
- Item: stmt -> ['struct_stmt'], dot - 1
-State:
- Item: decl -> ['const_decl'], dot - 1
-State:
- Item: struct_stmt -> ['while_stmt'], dot - 1
-State:
- Item: decl -> ['var_decl'], dot - 1
-State:
- Item: assign_stmt -> ['identifier', '=', 'expression', ';'], dot - 1
-State:
- Item: type_const -> ['bool'], dot - 0
- Item: array_decl -> ['[', 'type_const', ']'], dot - 0
- Item: type -> ['type_const'], dot - 0
- Item: type -> ['array_decl'], dot - 0
- Item: var_decl -> ['#', 'type', 'identifier', ';'], dot - 1
- Item: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';'], dot - 1
- Item: type_const -> ['string'], dot - 0
- Item: type_const -> ['int'], dot - 0
-State:
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 1
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 1
- Item: condition -> ['expression', 'relation', 'expression'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 1
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: S -> ['stmt_list', 'S'], dot - 2
-State:
- Item: string_exp -> ['identifier'], dot - 0
- Item: io_stmt -> ['w', '(', 'string_exp', ')', ';'], dot - 2
- Item: string_exp -> ['string'], dot - 0
-State:
- Item: struct_stmt -> ['if_stmt'], dot - 1
-State:
- Item: struct_stmt -> ['while_stmt'], dot - 1
-State:
- Item: stmt_list -> ['stmt', 'stmt_list'], dot - 2
-State:
- Item: assign_stmt -> ['identifier', '=', 'expression', ';'], dot - 1
-State:
- Item: simple_stmt -> ['assign_stmt'], dot - 1
-State:
- Item: stmt -> ['simple_stmt'], dot - 1
-State:
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 1
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: condition -> ['expression', 'relation', 'expression'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}'], dot - 1
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 1
- Item: condition -> ['expression', 'relation', 'expression'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 1
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: stmt -> ['struct_stmt'], dot - 1
-State:
- Item: decl -> ['const_decl'], dot - 1
-State:
- Item: decl -> ['var_decl'], dot - 1
-State:
- Item: type_const -> ['bool'], dot - 0
- Item: array_decl -> ['[', 'type_const', ']'], dot - 0
- Item: type -> ['type_const'], dot - 0
- Item: type -> ['array_decl'], dot - 0
- Item: var_decl -> ['#', 'type', 'identifier', ';'], dot - 1
- Item: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';'], dot - 1
- Item: type_const -> ['string'], dot - 0
- Item: type_const -> ['int'], dot - 0
-State:
- Item: decl_list -> ['decl', 'decl_list'], dot - 2
-State:
- Item: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}'], dot - 2
-State:
- Item: factor -> ['identifier'], dot - 1
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 1
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: term -> ['factor'], dot - 1
- Item: term -> ['factor', '/', 'term'], dot - 1
- Item: term -> ['factor', '*', 'term'], dot - 1
- Item: term -> ['factor', '%', 'term'], dot - 1
-State:
- Item: expression -> ['term', '-', 'expression'], dot - 1
- Item: expression -> ['term'], dot - 1
- Item: expression -> ['term', '+', 'expression'], dot - 1
-State:
- Item: factor -> ['integer'], dot - 1
-State:
- Item: relation -> ['='], dot - 0
- Item: relation -> ['>='], dot - 0
- Item: relation -> ['>'], dot - 0
- Item: relation -> ['<='], dot - 0
- Item: relation -> ['!='], dot - 0
- Item: condition -> ['expression', 'relation', 'expression'], dot - 1
- Item: relation -> ['<'], dot - 0
-State:
- Item: stmt -> ['struct_stmt'], dot - 1
-State:
- Item: decl -> ['const_decl'], dot - 1
-State:
- Item: struct_stmt -> ['while_stmt'], dot - 1
-State:
- Item: decl -> ['var_decl'], dot - 1
-State:
- Item: assign_stmt -> ['identifier', '=', 'expression', ';'], dot - 1
-State:
- Item: type_const -> ['bool'], dot - 0
- Item: array_decl -> ['[', 'type_const', ']'], dot - 0
- Item: type -> ['type_const'], dot - 0
- Item: type -> ['array_decl'], dot - 0
- Item: var_decl -> ['#', 'type', 'identifier', ';'], dot - 1
- Item: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';'], dot - 1
- Item: type_const -> ['string'], dot - 0
- Item: type_const -> ['int'], dot - 0
-State:
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 1
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 1
- Item: condition -> ['expression', 'relation', 'expression'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 1
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: S -> ['decl_list', 'S'], dot - 2
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: assign_stmt -> ['identifier', '=', 'expression', ';'], dot - 2
- Item: term -> ['factor'], dot - 0
-State:
- Item: type_const -> ['int'], dot - 1
-State:
- Item: type -> ['array_decl'], dot - 1
-State:
- Item: type_const -> ['bool'], dot - 1
-State:
- Item: type_const -> ['string'], dot - 0
- Item: type_const -> ['int'], dot - 0
- Item: type_const -> ['bool'], dot - 0
- Item: array_decl -> ['[', 'type_const', ']'], dot - 1
-State:
- Item: type_const -> ['string'], dot - 1
-State:
- Item: var_decl -> ['#', 'type', 'identifier', ';'], dot - 2
- Item: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';'], dot - 2
-State:
- Item: type -> ['type_const'], dot - 1
-State:
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 2
-State:
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 2
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 2
-State:
- Item: factor -> ['identifier'], dot - 1
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 1
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: term -> ['factor'], dot - 1
- Item: term -> ['factor', '/', 'term'], dot - 1
- Item: term -> ['factor', '*', 'term'], dot - 1
- Item: term -> ['factor', '%', 'term'], dot - 1
-State:
- Item: expression -> ['term', '-', 'expression'], dot - 1
- Item: expression -> ['term'], dot - 1
- Item: expression -> ['term', '+', 'expression'], dot - 1
-State:
- Item: factor -> ['integer'], dot - 1
-State:
- Item: relation -> ['='], dot - 0
- Item: relation -> ['>='], dot - 0
- Item: relation -> ['>'], dot - 0
- Item: relation -> ['<='], dot - 0
- Item: relation -> ['!='], dot - 0
- Item: condition -> ['expression', 'relation', 'expression'], dot - 1
- Item: relation -> ['<'], dot - 0
-State:
- Item: type_const -> ['int'], dot - 1
-State:
- Item: type -> ['array_decl'], dot - 1
-State:
- Item: type_const -> ['bool'], dot - 1
-State:
- Item: type_const -> ['string'], dot - 0
- Item: type_const -> ['int'], dot - 0
- Item: type_const -> ['bool'], dot - 0
- Item: array_decl -> ['[', 'type_const', ']'], dot - 1
-State:
- Item: type_const -> ['string'], dot - 1
-State:
- Item: const_decl -> ['constant', '#', 'type', 'identifier', '=', 'expression', ';'], dot - 3
-State:
- Item: type -> ['type_const'], dot - 1
-State:
- Item: string_exp -> ['identifier'], dot - 0
- Item: io_stmt -> ['w', '(', 'string_exp', ')', ';'], dot - 2
- Item: string_exp -> ['string'], dot - 0
-State:
- Item: stmt_list -> ['stmt', 'stmt_list'], dot - 2
-State:
- Item: decl_list -> ['decl', 'decl_list'], dot - 2
-State:
- Item: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}'], dot - 2
-State:
- Item: factor -> ['identifier'], dot - 1
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 1
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: term -> ['factor'], dot - 1
- Item: term -> ['factor', '/', 'term'], dot - 1
- Item: term -> ['factor', '*', 'term'], dot - 1
- Item: term -> ['factor', '%', 'term'], dot - 1
-State:
- Item: expression -> ['term', '-', 'expression'], dot - 1
- Item: expression -> ['term'], dot - 1
- Item: expression -> ['term', '+', 'expression'], dot - 1
-State:
- Item: factor -> ['integer'], dot - 1
-State:
- Item: relation -> ['='], dot - 0
- Item: relation -> ['>='], dot - 0
- Item: relation -> ['>'], dot - 0
- Item: relation -> ['<='], dot - 0
- Item: relation -> ['!='], dot - 0
- Item: condition -> ['expression', 'relation', 'expression'], dot - 1
- Item: relation -> ['<'], dot - 0
-State:
- Item: S -> ['decl_list', 'S'], dot - 2
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: assign_stmt -> ['identifier', '=', 'expression', ';'], dot - 2
- Item: term -> ['factor'], dot - 0
-State:
- Item: type_const -> ['int'], dot - 1
-State:
- Item: type -> ['array_decl'], dot - 1
-State:
- Item: type_const -> ['bool'], dot - 1
-State:
- Item: type_const -> ['string'], dot - 0
- Item: type_const -> ['int'], dot - 0
- Item: type_const -> ['bool'], dot - 0
- Item: array_decl -> ['[', 'type_const', ']'], dot - 1
-State:
- Item: type_const -> ['string'], dot - 1
-State:
- Item: var_decl -> ['#', 'type', 'identifier', ';'], dot - 2
- Item: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';'], dot - 2
-State:
- Item: type -> ['type_const'], dot - 1
-State:
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 2
-State:
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 2
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 2
-State:
- Item: factor -> ['identifier'], dot - 1
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 1
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: term -> ['factor'], dot - 1
- Item: term -> ['factor', '/', 'term'], dot - 1
- Item: term -> ['factor', '*', 'term'], dot - 1
- Item: term -> ['factor', '%', 'term'], dot - 1
-State:
- Item: expression -> ['term', '-', 'expression'], dot - 1
- Item: expression -> ['term'], dot - 1
- Item: expression -> ['term', '+', 'expression'], dot - 1
-State:
- Item: factor -> ['integer'], dot - 1
-State:
- Item: relation -> ['='], dot - 0
- Item: relation -> ['>='], dot - 0
- Item: relation -> ['>'], dot - 0
- Item: relation -> ['<='], dot - 0
- Item: relation -> ['!='], dot - 0
- Item: condition -> ['expression', 'relation', 'expression'], dot - 1
- Item: relation -> ['<'], dot - 0
-State:
- Item: io_stmt -> ['w', '(', 'string_exp', ')', ';'], dot - 3
-State:
- Item: string_exp -> ['identifier'], dot - 1
-State:
- Item: string_exp -> ['string'], dot - 1
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: assign_stmt -> ['identifier', '=', 'expression', ';'], dot - 2
- Item: term -> ['factor'], dot - 0
-State:
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 2
-State:
- Item: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}'], dot - 2
-State:
- Item: factor -> ['identifier'], dot - 1
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 1
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: term -> ['factor'], dot - 1
- Item: term -> ['factor', '/', 'term'], dot - 1
- Item: term -> ['factor', '*', 'term'], dot - 1
- Item: term -> ['factor', '%', 'term'], dot - 1
-State:
- Item: expression -> ['term', '-', 'expression'], dot - 1
- Item: expression -> ['term'], dot - 1
- Item: expression -> ['term', '+', 'expression'], dot - 1
-State:
- Item: factor -> ['integer'], dot - 1
-State:
- Item: relation -> ['='], dot - 0
- Item: relation -> ['>='], dot - 0
- Item: relation -> ['>'], dot - 0
- Item: relation -> ['<='], dot - 0
- Item: relation -> ['!='], dot - 0
- Item: condition -> ['expression', 'relation', 'expression'], dot - 1
- Item: relation -> ['<'], dot - 0
-State:
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 2
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 2
-State:
- Item: factor -> ['identifier'], dot - 1
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 1
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: term -> ['factor'], dot - 1
- Item: term -> ['factor', '/', 'term'], dot - 1
- Item: term -> ['factor', '*', 'term'], dot - 1
- Item: term -> ['factor', '%', 'term'], dot - 1
-State:
- Item: expression -> ['term', '-', 'expression'], dot - 1
- Item: expression -> ['term'], dot - 1
- Item: expression -> ['term', '+', 'expression'], dot - 1
-State:
- Item: factor -> ['integer'], dot - 1
-State:
- Item: relation -> ['='], dot - 0
- Item: relation -> ['>='], dot - 0
- Item: relation -> ['>'], dot - 0
- Item: relation -> ['<='], dot - 0
- Item: relation -> ['!='], dot - 0
- Item: condition -> ['expression', 'relation', 'expression'], dot - 1
- Item: relation -> ['<'], dot - 0
-State:
- Item: type_const -> ['int'], dot - 1
-State:
- Item: type -> ['array_decl'], dot - 1
-State:
- Item: type_const -> ['bool'], dot - 1
-State:
- Item: type_const -> ['string'], dot - 0
- Item: type_const -> ['int'], dot - 0
- Item: type_const -> ['bool'], dot - 0
- Item: array_decl -> ['[', 'type_const', ']'], dot - 1
-State:
- Item: type_const -> ['string'], dot - 1
-State:
- Item: var_decl -> ['#', 'type', 'identifier', ';'], dot - 2
- Item: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';'], dot - 2
-State:
- Item: type -> ['type_const'], dot - 1
-State:
- Item: stmt_list -> ['stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 0
- Item: struct_stmt -> ['if_stmt'], dot - 0
- Item: stmt -> ['simple_stmt'], dot - 0
- Item: struct_stmt -> ['while_stmt'], dot - 0
- Item: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}'], dot - 0
- Item: simple_stmt -> ['io_stmt'], dot - 0
- Item: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}'], dot - 3
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 0
- Item: stmt -> ['struct_stmt'], dot - 0
- Item: assign_stmt -> ['identifier', '=', 'expression', ';'], dot - 0
- Item: stmt_list -> ['stmt', 'stmt_list'], dot - 0
- Item: simple_stmt -> ['assign_stmt'], dot - 0
- Item: io_stmt -> ['w', '(', 'string_exp', ')', ';'], dot - 0
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 0
-State:
- Item: term -> ['factor'], dot - 1
- Item: term -> ['factor', '/', 'term'], dot - 1
- Item: term -> ['factor', '*', 'term'], dot - 1
- Item: term -> ['factor', '%', 'term'], dot - 1
-State:
- Item: expression -> ['term', '-', 'expression'], dot - 1
- Item: expression -> ['term'], dot - 1
- Item: expression -> ['term', '+', 'expression'], dot - 1
-State:
- Item: factor -> ['integer'], dot - 1
-State:
- Item: factor -> ['(', 'expression', ')'], dot - 2
-State:
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 2
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: term -> ['factor', '/', 'term'], dot - 2
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 2
- Item: factor -> ['integer'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: expression -> ['term', '-', 'expression'], dot - 2
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 2
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: relation -> ['!='], dot - 1
-State:
- Item: relation -> ['<='], dot - 1
-State:
- Item: relation -> ['='], dot - 1
-State:
- Item: relation -> ['<'], dot - 1
-State:
- Item: relation -> ['>'], dot - 1
-State:
- Item: relation -> ['>='], dot - 1
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: condition -> ['expression', 'relation', 'expression'], dot - 2
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: assign_stmt -> ['identifier', '=', 'expression', ';'], dot - 2
- Item: term -> ['factor'], dot - 0
-State:
- Item: type_const -> ['int'], dot - 1
-State:
- Item: type -> ['array_decl'], dot - 1
-State:
- Item: type_const -> ['bool'], dot - 1
-State:
- Item: type_const -> ['string'], dot - 0
- Item: type_const -> ['int'], dot - 0
- Item: type_const -> ['bool'], dot - 0
- Item: array_decl -> ['[', 'type_const', ']'], dot - 1
-State:
- Item: type_const -> ['string'], dot - 1
-State:
- Item: var_decl -> ['#', 'type', 'identifier', ';'], dot - 2
- Item: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';'], dot - 2
-State:
- Item: type -> ['type_const'], dot - 1
-State:
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 2
-State:
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 2
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 2
-State:
- Item: assign_stmt -> ['identifier', '=', 'expression', ';'], dot - 3
-State:
- Item: type_const -> ['string'], dot - 1
-State:
- Item: array_decl -> ['[', 'type_const', ']'], dot - 2
-State:
- Item: var_decl -> ['#', 'type', 'identifier', ';'], dot - 3
- Item: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';'], dot - 3
-State:
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 3
-State:
- Item: stmt_list -> ['stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 3
- Item: struct_stmt -> ['if_stmt'], dot - 0
- Item: stmt -> ['simple_stmt'], dot - 0
- Item: struct_stmt -> ['while_stmt'], dot - 0
- Item: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}'], dot - 0
- Item: simple_stmt -> ['io_stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 0
- Item: stmt -> ['struct_stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 3
- Item: assign_stmt -> ['identifier', '=', 'expression', ';'], dot - 0
- Item: stmt_list -> ['stmt', 'stmt_list'], dot - 0
- Item: simple_stmt -> ['assign_stmt'], dot - 0
- Item: io_stmt -> ['w', '(', 'string_exp', ')', ';'], dot - 0
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 0
-State:
- Item: factor -> ['(', 'expression', ')'], dot - 2
-State:
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 2
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: term -> ['factor', '/', 'term'], dot - 2
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 2
- Item: factor -> ['integer'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: expression -> ['term', '-', 'expression'], dot - 2
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 2
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: relation -> ['!='], dot - 1
-State:
- Item: relation -> ['<='], dot - 1
-State:
- Item: relation -> ['='], dot - 1
-State:
- Item: relation -> ['<'], dot - 1
-State:
- Item: relation -> ['>'], dot - 1
-State:
- Item: relation -> ['>='], dot - 1
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: condition -> ['expression', 'relation', 'expression'], dot - 2
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: array_decl -> ['[', 'type_const', ']'], dot - 2
-State:
- Item: const_decl -> ['constant', '#', 'type', 'identifier', '=', 'expression', ';'], dot - 4
-State:
- Item: io_stmt -> ['w', '(', 'string_exp', ')', ';'], dot - 3
-State:
- Item: string_exp -> ['identifier'], dot - 1
-State:
- Item: string_exp -> ['string'], dot - 1
-State:
- Item: stmt_list -> ['stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 0
- Item: struct_stmt -> ['if_stmt'], dot - 0
- Item: stmt -> ['simple_stmt'], dot - 0
- Item: struct_stmt -> ['while_stmt'], dot - 0
- Item: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}'], dot - 0
- Item: simple_stmt -> ['io_stmt'], dot - 0
- Item: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}'], dot - 3
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 0
- Item: stmt -> ['struct_stmt'], dot - 0
- Item: assign_stmt -> ['identifier', '=', 'expression', ';'], dot - 0
- Item: stmt_list -> ['stmt', 'stmt_list'], dot - 0
- Item: simple_stmt -> ['assign_stmt'], dot - 0
- Item: io_stmt -> ['w', '(', 'string_exp', ')', ';'], dot - 0
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 0
-State:
- Item: factor -> ['(', 'expression', ')'], dot - 2
-State:
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 2
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: term -> ['factor', '/', 'term'], dot - 2
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 2
- Item: factor -> ['integer'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: expression -> ['term', '-', 'expression'], dot - 2
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 2
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: relation -> ['!='], dot - 1
-State:
- Item: relation -> ['<='], dot - 1
-State:
- Item: relation -> ['='], dot - 1
-State:
- Item: relation -> ['<'], dot - 1
-State:
- Item: relation -> ['>'], dot - 1
-State:
- Item: relation -> ['>='], dot - 1
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: condition -> ['expression', 'relation', 'expression'], dot - 2
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: assign_stmt -> ['identifier', '=', 'expression', ';'], dot - 3
-State:
- Item: array_decl -> ['[', 'type_const', ']'], dot - 2
-State:
- Item: var_decl -> ['#', 'type', 'identifier', ';'], dot - 3
- Item: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';'], dot - 3
-State:
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 3
-State:
- Item: stmt_list -> ['stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 3
- Item: struct_stmt -> ['if_stmt'], dot - 0
- Item: stmt -> ['simple_stmt'], dot - 0
- Item: struct_stmt -> ['while_stmt'], dot - 0
- Item: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}'], dot - 0
- Item: simple_stmt -> ['io_stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 0
- Item: stmt -> ['struct_stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 3
- Item: assign_stmt -> ['identifier', '=', 'expression', ';'], dot - 0
- Item: stmt_list -> ['stmt', 'stmt_list'], dot - 0
- Item: simple_stmt -> ['assign_stmt'], dot - 0
- Item: io_stmt -> ['w', '(', 'string_exp', ')', ';'], dot - 0
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 0
-State:
- Item: factor -> ['(', 'expression', ')'], dot - 2
-State:
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 2
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: term -> ['factor', '/', 'term'], dot - 2
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 2
- Item: factor -> ['integer'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: expression -> ['term', '-', 'expression'], dot - 2
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 2
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: relation -> ['!='], dot - 1
-State:
- Item: relation -> ['<='], dot - 1
-State:
- Item: relation -> ['='], dot - 1
-State:
- Item: relation -> ['<'], dot - 1
-State:
- Item: relation -> ['>'], dot - 1
-State:
- Item: relation -> ['>='], dot - 1
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: condition -> ['expression', 'relation', 'expression'], dot - 2
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: io_stmt -> ['w', '(', 'string_exp', ')', ';'], dot - 4
-State:
- Item: assign_stmt -> ['identifier', '=', 'expression', ';'], dot - 3
-State:
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 3
-State:
- Item: stmt_list -> ['stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 0
- Item: struct_stmt -> ['if_stmt'], dot - 0
- Item: stmt -> ['simple_stmt'], dot - 0
- Item: struct_stmt -> ['while_stmt'], dot - 0
- Item: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}'], dot - 0
- Item: simple_stmt -> ['io_stmt'], dot - 0
- Item: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}'], dot - 3
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 0
- Item: stmt -> ['struct_stmt'], dot - 0
- Item: assign_stmt -> ['identifier', '=', 'expression', ';'], dot - 0
- Item: stmt_list -> ['stmt', 'stmt_list'], dot - 0
- Item: simple_stmt -> ['assign_stmt'], dot - 0
- Item: io_stmt -> ['w', '(', 'string_exp', ')', ';'], dot - 0
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 0
-State:
- Item: factor -> ['(', 'expression', ')'], dot - 2
-State:
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 2
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: term -> ['factor', '/', 'term'], dot - 2
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 2
- Item: factor -> ['integer'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: expression -> ['term', '-', 'expression'], dot - 2
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 2
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: relation -> ['!='], dot - 1
-State:
- Item: relation -> ['<='], dot - 1
-State:
- Item: relation -> ['='], dot - 1
-State:
- Item: relation -> ['<'], dot - 1
-State:
- Item: relation -> ['>'], dot - 1
-State:
- Item: relation -> ['>='], dot - 1
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: condition -> ['expression', 'relation', 'expression'], dot - 2
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: stmt_list -> ['stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 3
- Item: struct_stmt -> ['if_stmt'], dot - 0
- Item: stmt -> ['simple_stmt'], dot - 0
- Item: struct_stmt -> ['while_stmt'], dot - 0
- Item: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}'], dot - 0
- Item: simple_stmt -> ['io_stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 0
- Item: stmt -> ['struct_stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 3
- Item: assign_stmt -> ['identifier', '=', 'expression', ';'], dot - 0
- Item: stmt_list -> ['stmt', 'stmt_list'], dot - 0
- Item: simple_stmt -> ['assign_stmt'], dot - 0
- Item: io_stmt -> ['w', '(', 'string_exp', ')', ';'], dot - 0
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 0
-State:
- Item: factor -> ['(', 'expression', ')'], dot - 2
-State:
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 2
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: term -> ['factor', '/', 'term'], dot - 2
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 2
- Item: factor -> ['integer'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: expression -> ['term', '-', 'expression'], dot - 2
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 2
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: relation -> ['!='], dot - 1
-State:
- Item: relation -> ['<='], dot - 1
-State:
- Item: relation -> ['='], dot - 1
-State:
- Item: relation -> ['<'], dot - 1
-State:
- Item: relation -> ['>'], dot - 1
-State:
- Item: relation -> ['>='], dot - 1
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: condition -> ['expression', 'relation', 'expression'], dot - 2
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: array_decl -> ['[', 'type_const', ']'], dot - 2
-State:
- Item: var_decl -> ['#', 'type', 'identifier', ';'], dot - 3
- Item: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';'], dot - 3
-State:
- Item: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}'], dot - 4
-State:
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 2
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: term -> ['factor', '/', 'term'], dot - 2
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 2
- Item: factor -> ['integer'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: expression -> ['term', '-', 'expression'], dot - 2
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 2
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: factor -> ['(', 'expression', ')'], dot - 3
-State:
- Item: term -> ['factor', '*', 'term'], dot - 3
-State:
- Item: term -> ['factor', '/', 'term'], dot - 3
-State:
- Item: term -> ['factor', '%', 'term'], dot - 3
-State:
- Item: expression -> ['term', '-', 'expression'], dot - 3
-State:
- Item: expression -> ['term', '+', 'expression'], dot - 3
-State:
- Item: condition -> ['expression', 'relation', 'expression'], dot - 3
-State:
- Item: assign_stmt -> ['identifier', '=', 'expression', ';'], dot - 3
-State:
- Item: array_decl -> ['[', 'type_const', ']'], dot - 2
-State:
- Item: var_decl -> ['#', 'type', 'identifier', ';'], dot - 3
- Item: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';'], dot - 3
-State:
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 3
-State:
- Item: stmt_list -> ['stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 3
- Item: struct_stmt -> ['if_stmt'], dot - 0
- Item: stmt -> ['simple_stmt'], dot - 0
- Item: struct_stmt -> ['while_stmt'], dot - 0
- Item: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}'], dot - 0
- Item: simple_stmt -> ['io_stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 0
- Item: stmt -> ['struct_stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 3
- Item: assign_stmt -> ['identifier', '=', 'expression', ';'], dot - 0
- Item: stmt_list -> ['stmt', 'stmt_list'], dot - 0
- Item: simple_stmt -> ['assign_stmt'], dot - 0
- Item: io_stmt -> ['w', '(', 'string_exp', ')', ';'], dot - 0
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 0
-State:
- Item: assign_stmt -> ['identifier', '=', 'expression', ';'], dot - 4
-State:
- Item: array_decl -> ['[', 'type_const', ']'], dot - 3
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';'], dot - 4
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: var_decl -> ['#', 'type', 'identifier', ';'], dot - 4
-State:
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 4
-State:
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 4
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 4
-State:
- Item: factor -> ['(', 'expression', ')'], dot - 3
-State:
- Item: term -> ['factor', '*', 'term'], dot - 3
-State:
- Item: term -> ['factor', '/', 'term'], dot - 3
-State:
- Item: term -> ['factor', '%', 'term'], dot - 3
-State:
- Item: expression -> ['term', '-', 'expression'], dot - 3
-State:
- Item: expression -> ['term', '+', 'expression'], dot - 3
-State:
- Item: condition -> ['expression', 'relation', 'expression'], dot - 3
-State:
- Item: array_decl -> ['[', 'type_const', ']'], dot - 3
-State:
- Item: expression -> ['term'], dot - 0
- Item: const_decl -> ['constant', '#', 'type', 'identifier', '=', 'expression', ';'], dot - 5
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: io_stmt -> ['w', '(', 'string_exp', ')', ';'], dot - 4
-State:
- Item: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}'], dot - 4
-State:
- Item: factor -> ['(', 'expression', ')'], dot - 3
-State:
- Item: term -> ['factor', '*', 'term'], dot - 3
-State:
- Item: term -> ['factor', '/', 'term'], dot - 3
-State:
- Item: term -> ['factor', '%', 'term'], dot - 3
-State:
- Item: expression -> ['term', '-', 'expression'], dot - 3
-State:
- Item: expression -> ['term', '+', 'expression'], dot - 3
-State:
- Item: condition -> ['expression', 'relation', 'expression'], dot - 3
-State:
- Item: assign_stmt -> ['identifier', '=', 'expression', ';'], dot - 4
-State:
- Item: array_decl -> ['[', 'type_const', ']'], dot - 3
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';'], dot - 4
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: var_decl -> ['#', 'type', 'identifier', ';'], dot - 4
-State:
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 4
-State:
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 4
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 4
-State:
- Item: factor -> ['(', 'expression', ')'], dot - 3
-State:
- Item: term -> ['factor', '*', 'term'], dot - 3
-State:
- Item: term -> ['factor', '/', 'term'], dot - 3
-State:
- Item: term -> ['factor', '%', 'term'], dot - 3
-State:
- Item: expression -> ['term', '-', 'expression'], dot - 3
-State:
- Item: expression -> ['term', '+', 'expression'], dot - 3
-State:
- Item: condition -> ['expression', 'relation', 'expression'], dot - 3
-State:
- Item: io_stmt -> ['w', '(', 'string_exp', ')', ';'], dot - 5
-State:
- Item: assign_stmt -> ['identifier', '=', 'expression', ';'], dot - 4
-State:
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 4
-State:
- Item: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}'], dot - 4
-State:
- Item: factor -> ['(', 'expression', ')'], dot - 3
-State:
- Item: term -> ['factor', '*', 'term'], dot - 3
-State:
- Item: term -> ['factor', '/', 'term'], dot - 3
-State:
- Item: term -> ['factor', '%', 'term'], dot - 3
-State:
- Item: expression -> ['term', '-', 'expression'], dot - 3
-State:
- Item: expression -> ['term', '+', 'expression'], dot - 3
-State:
- Item: condition -> ['expression', 'relation', 'expression'], dot - 3
-State:
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 4
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 4
-State:
- Item: factor -> ['(', 'expression', ')'], dot - 3
-State:
- Item: term -> ['factor', '*', 'term'], dot - 3
-State:
- Item: term -> ['factor', '/', 'term'], dot - 3
-State:
- Item: term -> ['factor', '%', 'term'], dot - 3
-State:
- Item: expression -> ['term', '-', 'expression'], dot - 3
-State:
- Item: expression -> ['term', '+', 'expression'], dot - 3
-State:
- Item: condition -> ['expression', 'relation', 'expression'], dot - 3
-State:
- Item: array_decl -> ['[', 'type_const', ']'], dot - 3
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';'], dot - 4
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: var_decl -> ['#', 'type', 'identifier', ';'], dot - 4
-State:
- Item: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}'], dot - 5
-State:
- Item: term -> ['factor', '*', 'term'], dot - 3
-State:
- Item: term -> ['factor', '/', 'term'], dot - 3
-State:
- Item: term -> ['factor', '%', 'term'], dot - 3
-State:
- Item: expression -> ['term', '-', 'expression'], dot - 3
-State:
- Item: expression -> ['term', '+', 'expression'], dot - 3
-State:
- Item: assign_stmt -> ['identifier', '=', 'expression', ';'], dot - 4
-State:
- Item: array_decl -> ['[', 'type_const', ']'], dot - 3
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';'], dot - 4
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: var_decl -> ['#', 'type', 'identifier', ';'], dot - 4
-State:
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 4
-State:
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 4
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 4
-State:
- Item: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';'], dot - 5
-State:
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 5
-State:
- Item: temp_elif_stmt -> ['temp_elif_stmt', 'elif_stmt'], dot - 0
- Item: temp_elif_stmt -> ['E'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 5
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 5
-State:
- Item: const_decl -> ['constant', '#', 'type', 'identifier', '=', 'expression', ';'], dot - 6
-State:
- Item: io_stmt -> ['w', '(', 'string_exp', ')', ';'], dot - 5
-State:
- Item: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}'], dot - 5
-State:
- Item: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';'], dot - 5
-State:
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 5
-State:
- Item: temp_elif_stmt -> ['temp_elif_stmt', 'elif_stmt'], dot - 0
- Item: temp_elif_stmt -> ['E'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 5
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 5
-State:
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 5
-State:
- Item: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}'], dot - 5
-State:
- Item: temp_elif_stmt -> ['temp_elif_stmt', 'elif_stmt'], dot - 0
- Item: temp_elif_stmt -> ['E'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 5
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 5
-State:
- Item: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';'], dot - 5
-State:
- Item: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';'], dot - 5
-State:
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 5
-State:
- Item: temp_elif_stmt -> ['temp_elif_stmt', 'elif_stmt'], dot - 0
- Item: temp_elif_stmt -> ['E'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 5
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 5
-State:
- Item: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';'], dot - 6
-State:
- Item: temp_elif_stmt -> ['E'], dot - 1
-State:
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 6
- Item: else_stmt -> ['else', '{', 'stmt_list', '}'], dot - 0
- Item: temp_elif_stmt -> ['temp_elif_stmt', 'elif_stmt'], dot - 1
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 6
- Item: elif_stmt -> ['elif', 'condition', '{', 'stmt_list', '}'], dot - 0
-State:
- Item: const_decl -> ['constant', '#', 'type', 'identifier', '=', 'expression', ';'], dot - 7
-State:
- Item: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';'], dot - 6
-State:
- Item: temp_elif_stmt -> ['E'], dot - 1
-State:
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 6
- Item: else_stmt -> ['else', '{', 'stmt_list', '}'], dot - 0
- Item: temp_elif_stmt -> ['temp_elif_stmt', 'elif_stmt'], dot - 1
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 6
- Item: elif_stmt -> ['elif', 'condition', '{', 'stmt_list', '}'], dot - 0
-State:
- Item: temp_elif_stmt -> ['E'], dot - 1
-State:
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 6
- Item: else_stmt -> ['else', '{', 'stmt_list', '}'], dot - 0
- Item: temp_elif_stmt -> ['temp_elif_stmt', 'elif_stmt'], dot - 1
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 6
- Item: elif_stmt -> ['elif', 'condition', '{', 'stmt_list', '}'], dot - 0
-State:
- Item: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';'], dot - 6
-State:
- Item: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';'], dot - 6
-State:
- Item: temp_elif_stmt -> ['E'], dot - 1
-State:
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 6
- Item: else_stmt -> ['else', '{', 'stmt_list', '}'], dot - 0
- Item: temp_elif_stmt -> ['temp_elif_stmt', 'elif_stmt'], dot - 1
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 6
- Item: elif_stmt -> ['elif', 'condition', '{', 'stmt_list', '}'], dot - 0
-State:
- Item: temp_elif_stmt -> ['temp_elif_stmt', 'elif_stmt'], dot - 2
-State:
- Item: else_stmt -> ['else', '{', 'stmt_list', '}'], dot - 1
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: condition -> ['expression', 'relation', 'expression'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: elif_stmt -> ['elif', 'condition', '{', 'stmt_list', '}'], dot - 1
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 7
-State:
- Item: temp_elif_stmt -> ['temp_elif_stmt', 'elif_stmt'], dot - 2
-State:
- Item: else_stmt -> ['else', '{', 'stmt_list', '}'], dot - 1
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: condition -> ['expression', 'relation', 'expression'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: elif_stmt -> ['elif', 'condition', '{', 'stmt_list', '}'], dot - 1
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 7
-State:
- Item: temp_elif_stmt -> ['temp_elif_stmt', 'elif_stmt'], dot - 2
-State:
- Item: else_stmt -> ['else', '{', 'stmt_list', '}'], dot - 1
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: condition -> ['expression', 'relation', 'expression'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: elif_stmt -> ['elif', 'condition', '{', 'stmt_list', '}'], dot - 1
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 7
-State:
- Item: temp_elif_stmt -> ['temp_elif_stmt', 'elif_stmt'], dot - 2
-State:
- Item: else_stmt -> ['else', '{', 'stmt_list', '}'], dot - 1
-State:
- Item: expression -> ['term'], dot - 0
- Item: term -> ['factor', '%', 'term'], dot - 0
- Item: condition -> ['expression', 'relation', 'expression'], dot - 0
- Item: term -> ['factor', '*', 'term'], dot - 0
- Item: factor -> ['identifier'], dot - 0
- Item: elif_stmt -> ['elif', 'condition', '{', 'stmt_list', '}'], dot - 1
- Item: factor -> ['integer'], dot - 0
- Item: expression -> ['term', '+', 'expression'], dot - 0
- Item: expression -> ['term', '-', 'expression'], dot - 0
- Item: term -> ['factor', '/', 'term'], dot - 0
- Item: factor -> ['(', 'expression', ')'], dot - 0
- Item: term -> ['factor'], dot - 0
-State:
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 7
-State:
- Item: stmt_list -> ['stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 0
- Item: struct_stmt -> ['if_stmt'], dot - 0
- Item: stmt -> ['simple_stmt'], dot - 0
- Item: struct_stmt -> ['while_stmt'], dot - 0
- Item: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}'], dot - 0
- Item: simple_stmt -> ['io_stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 0
- Item: stmt -> ['struct_stmt'], dot - 0
- Item: else_stmt -> ['else', '{', 'stmt_list', '}'], dot - 2
- Item: assign_stmt -> ['identifier', '=', 'expression', ';'], dot - 0
- Item: stmt_list -> ['stmt', 'stmt_list'], dot - 0
- Item: simple_stmt -> ['assign_stmt'], dot - 0
- Item: io_stmt -> ['w', '(', 'string_exp', ')', ';'], dot - 0
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 0
-State:
- Item: elif_stmt -> ['elif', 'condition', '{', 'stmt_list', '}'], dot - 2
-State:
- Item: stmt_list -> ['stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 0
- Item: struct_stmt -> ['if_stmt'], dot - 0
- Item: stmt -> ['simple_stmt'], dot - 0
- Item: struct_stmt -> ['while_stmt'], dot - 0
- Item: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}'], dot - 0
- Item: simple_stmt -> ['io_stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 0
- Item: stmt -> ['struct_stmt'], dot - 0
- Item: else_stmt -> ['else', '{', 'stmt_list', '}'], dot - 2
- Item: assign_stmt -> ['identifier', '=', 'expression', ';'], dot - 0
- Item: stmt_list -> ['stmt', 'stmt_list'], dot - 0
- Item: simple_stmt -> ['assign_stmt'], dot - 0
- Item: io_stmt -> ['w', '(', 'string_exp', ')', ';'], dot - 0
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 0
-State:
- Item: elif_stmt -> ['elif', 'condition', '{', 'stmt_list', '}'], dot - 2
-State:
- Item: stmt_list -> ['stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 0
- Item: struct_stmt -> ['if_stmt'], dot - 0
- Item: stmt -> ['simple_stmt'], dot - 0
- Item: struct_stmt -> ['while_stmt'], dot - 0
- Item: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}'], dot - 0
- Item: simple_stmt -> ['io_stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 0
- Item: stmt -> ['struct_stmt'], dot - 0
- Item: else_stmt -> ['else', '{', 'stmt_list', '}'], dot - 2
- Item: assign_stmt -> ['identifier', '=', 'expression', ';'], dot - 0
- Item: stmt_list -> ['stmt', 'stmt_list'], dot - 0
- Item: simple_stmt -> ['assign_stmt'], dot - 0
- Item: io_stmt -> ['w', '(', 'string_exp', ')', ';'], dot - 0
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 0
-State:
- Item: elif_stmt -> ['elif', 'condition', '{', 'stmt_list', '}'], dot - 2
-State:
- Item: stmt_list -> ['stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 0
- Item: struct_stmt -> ['if_stmt'], dot - 0
- Item: stmt -> ['simple_stmt'], dot - 0
- Item: struct_stmt -> ['while_stmt'], dot - 0
- Item: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}'], dot - 0
- Item: simple_stmt -> ['io_stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 0
- Item: stmt -> ['struct_stmt'], dot - 0
- Item: else_stmt -> ['else', '{', 'stmt_list', '}'], dot - 2
- Item: assign_stmt -> ['identifier', '=', 'expression', ';'], dot - 0
- Item: stmt_list -> ['stmt', 'stmt_list'], dot - 0
- Item: simple_stmt -> ['assign_stmt'], dot - 0
- Item: io_stmt -> ['w', '(', 'string_exp', ')', ';'], dot - 0
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 0
-State:
- Item: elif_stmt -> ['elif', 'condition', '{', 'stmt_list', '}'], dot - 2
-State:
- Item: else_stmt -> ['else', '{', 'stmt_list', '}'], dot - 3
-State:
- Item: stmt_list -> ['stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 0
- Item: struct_stmt -> ['if_stmt'], dot - 0
- Item: stmt -> ['simple_stmt'], dot - 0
- Item: struct_stmt -> ['while_stmt'], dot - 0
- Item: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}'], dot - 0
- Item: simple_stmt -> ['io_stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 0
- Item: stmt -> ['struct_stmt'], dot - 0
- Item: assign_stmt -> ['identifier', '=', 'expression', ';'], dot - 0
- Item: stmt_list -> ['stmt', 'stmt_list'], dot - 0
- Item: simple_stmt -> ['assign_stmt'], dot - 0
- Item: io_stmt -> ['w', '(', 'string_exp', ')', ';'], dot - 0
- Item: elif_stmt -> ['elif', 'condition', '{', 'stmt_list', '}'], dot - 3
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 0
-State:
- Item: else_stmt -> ['else', '{', 'stmt_list', '}'], dot - 3
-State:
- Item: stmt_list -> ['stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 0
- Item: struct_stmt -> ['if_stmt'], dot - 0
- Item: stmt -> ['simple_stmt'], dot - 0
- Item: struct_stmt -> ['while_stmt'], dot - 0
- Item: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}'], dot - 0
- Item: simple_stmt -> ['io_stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 0
- Item: stmt -> ['struct_stmt'], dot - 0
- Item: assign_stmt -> ['identifier', '=', 'expression', ';'], dot - 0
- Item: stmt_list -> ['stmt', 'stmt_list'], dot - 0
- Item: simple_stmt -> ['assign_stmt'], dot - 0
- Item: io_stmt -> ['w', '(', 'string_exp', ')', ';'], dot - 0
- Item: elif_stmt -> ['elif', 'condition', '{', 'stmt_list', '}'], dot - 3
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 0
-State:
- Item: else_stmt -> ['else', '{', 'stmt_list', '}'], dot - 3
-State:
- Item: stmt_list -> ['stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 0
- Item: struct_stmt -> ['if_stmt'], dot - 0
- Item: stmt -> ['simple_stmt'], dot - 0
- Item: struct_stmt -> ['while_stmt'], dot - 0
- Item: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}'], dot - 0
- Item: simple_stmt -> ['io_stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 0
- Item: stmt -> ['struct_stmt'], dot - 0
- Item: assign_stmt -> ['identifier', '=', 'expression', ';'], dot - 0
- Item: stmt_list -> ['stmt', 'stmt_list'], dot - 0
- Item: simple_stmt -> ['assign_stmt'], dot - 0
- Item: io_stmt -> ['w', '(', 'string_exp', ')', ';'], dot - 0
- Item: elif_stmt -> ['elif', 'condition', '{', 'stmt_list', '}'], dot - 3
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 0
-State:
- Item: else_stmt -> ['else', '{', 'stmt_list', '}'], dot - 3
-State:
- Item: stmt_list -> ['stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt'], dot - 0
- Item: struct_stmt -> ['if_stmt'], dot - 0
- Item: stmt -> ['simple_stmt'], dot - 0
- Item: struct_stmt -> ['while_stmt'], dot - 0
- Item: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}'], dot - 0
- Item: simple_stmt -> ['io_stmt'], dot - 0
- Item: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt'], dot - 0
- Item: stmt -> ['struct_stmt'], dot - 0
- Item: assign_stmt -> ['identifier', '=', 'expression', ';'], dot - 0
- Item: stmt_list -> ['stmt', 'stmt_list'], dot - 0
- Item: simple_stmt -> ['assign_stmt'], dot - 0
- Item: io_stmt -> ['w', '(', 'string_exp', ')', ';'], dot - 0
- Item: elif_stmt -> ['elif', 'condition', '{', 'stmt_list', '}'], dot - 3
- Item: io_stmt -> ['r', '(', 'identifier', ')', ';'], dot - 0
-State:
- Item: else_stmt -> ['else', '{', 'stmt_list', '}'], dot - 4
-State:
- Item: elif_stmt -> ['elif', 'condition', '{', 'stmt_list', '}'], dot - 4
-State:
- Item: else_stmt -> ['else', '{', 'stmt_list', '}'], dot - 4
-State:
- Item: elif_stmt -> ['elif', 'condition', '{', 'stmt_list', '}'], dot - 4
-State:
- Item: else_stmt -> ['else', '{', 'stmt_list', '}'], dot - 4
-State:
- Item: elif_stmt -> ['elif', 'condition', '{', 'stmt_list', '}'], dot - 4
-State:
- Item: else_stmt -> ['else', '{', 'stmt_list', '}'], dot - 4
-State:
- Item: elif_stmt -> ['elif', 'condition', '{', 'stmt_list', '}'], dot - 4
-State:
- Item: elif_stmt -> ['elif', 'condition', '{', 'stmt_list', '}'], dot - 5
-State:
- Item: elif_stmt -> ['elif', 'condition', '{', 'stmt_list', '}'], dot - 5
-State:
- Item: elif_stmt -> ['elif', 'condition', '{', 'stmt_list', '}'], dot - 5
-State:
- Item: elif_stmt -> ['elif', 'condition', '{', 'stmt_list', '}'], dot - 5
+([
+State: {
+Production: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';']; dot: 0, 
+Production: var_decl -> ['#', 'type', 'identifier', ';']; dot: 0, 
+Production: stmt_list -> ['stmt']; dot: 0, 
+Production: stmt_list -> ['stmt', 'stmt_list']; dot: 0, 
+Production: io_stmt -> ['r', '(', 'identifier', ')', ';']; dot: 0, 
+Production: io_stmt -> ['w', '(', 'string_exp', ')', ';']; dot: 0, 
+Production: struct_stmt -> ['if_stmt']; dot: 0, 
+Production: struct_stmt -> ['while_stmt']; dot: 0, 
+Production: const_decl -> ['constant', '#', 'type', 'identifier', '=', 'expression', ';']; dot: 0, 
+Production: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}']; dot: 0, 
+Production: S0 -> ['S']; dot: 0, 
+Production: decl_list -> ['decl', 'decl_list']; dot: 0, 
+Production: decl_list -> ['decl']; dot: 0, 
+Production: assign_stmt -> ['identifier', '=', 'expression', ';']; dot: 0, 
+Production: simple_stmt -> ['assign_stmt']; dot: 0, 
+Production: simple_stmt -> ['io_stmt']; dot: 0, 
+Production: S -> ['stmt_list', 'S']; dot: 0, 
+Production: S -> ['decl_list', 'S']; dot: 0, 
+Production: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt']; dot: 0, 
+Production: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt']; dot: 0, 
+Production: decl -> ['const_decl']; dot: 0, 
+Production: decl -> ['var_decl']; dot: 0, 
+Production: stmt -> ['simple_stmt']; dot: 0, 
+Production: stmt -> ['struct_stmt']; dot: 0}
+, 
+State: {
+Production: decl -> ['var_decl']; dot: 1}
+, 
+State: {
+Production: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';']; dot: 0, 
+Production: var_decl -> ['#', 'type', 'identifier', ';']; dot: 0, 
+Production: stmt_list -> ['stmt']; dot: 0, 
+Production: stmt_list -> ['stmt', 'stmt_list']; dot: 0, 
+Production: io_stmt -> ['r', '(', 'identifier', ')', ';']; dot: 0, 
+Production: io_stmt -> ['w', '(', 'string_exp', ')', ';']; dot: 0, 
+Production: struct_stmt -> ['if_stmt']; dot: 0, 
+Production: struct_stmt -> ['while_stmt']; dot: 0, 
+Production: const_decl -> ['constant', '#', 'type', 'identifier', '=', 'expression', ';']; dot: 0, 
+Production: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}']; dot: 0, 
+Production: decl_list -> ['decl']; dot: 0, 
+Production: decl_list -> ['decl', 'decl_list']; dot: 0, 
+Production: assign_stmt -> ['identifier', '=', 'expression', ';']; dot: 0, 
+Production: simple_stmt -> ['assign_stmt']; dot: 0, 
+Production: simple_stmt -> ['io_stmt']; dot: 0, 
+Production: S -> ['decl_list', 'S']; dot: 0, 
+Production: S -> ['stmt_list', 'S']; dot: 0, 
+Production: S -> ['stmt_list', 'S']; dot: 1, 
+Production: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt']; dot: 0, 
+Production: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt']; dot: 0, 
+Production: decl -> ['const_decl']; dot: 0, 
+Production: decl -> ['var_decl']; dot: 0, 
+Production: stmt -> ['simple_stmt']; dot: 0, 
+Production: stmt -> ['struct_stmt']; dot: 0}
+, 
+State: {
+Production: simple_stmt -> ['io_stmt']; dot: 1}
+, 
+State: {
+Production: stmt -> ['struct_stmt']; dot: 1}
+, 
+State: {
+Production: decl -> ['const_decl']; dot: 1}
+, 
+State: {
+Production: struct_stmt -> ['while_stmt']; dot: 1}
+, 
+State: {
+Production: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';']; dot: 0, 
+Production: var_decl -> ['#', 'type', 'identifier', ';']; dot: 0, 
+Production: stmt_list -> ['stmt']; dot: 0, 
+Production: stmt_list -> ['stmt', 'stmt_list']; dot: 0, 
+Production: io_stmt -> ['r', '(', 'identifier', ')', ';']; dot: 0, 
+Production: io_stmt -> ['w', '(', 'string_exp', ')', ';']; dot: 0, 
+Production: struct_stmt -> ['if_stmt']; dot: 0, 
+Production: struct_stmt -> ['while_stmt']; dot: 0, 
+Production: const_decl -> ['constant', '#', 'type', 'identifier', '=', 'expression', ';']; dot: 0, 
+Production: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}']; dot: 0, 
+Production: decl_list -> ['decl']; dot: 0, 
+Production: decl_list -> ['decl', 'decl_list']; dot: 0, 
+Production: assign_stmt -> ['identifier', '=', 'expression', ';']; dot: 0, 
+Production: simple_stmt -> ['assign_stmt']; dot: 0, 
+Production: simple_stmt -> ['io_stmt']; dot: 0, 
+Production: S -> ['decl_list', 'S']; dot: 0, 
+Production: S -> ['stmt_list', 'S']; dot: 0, 
+Production: S -> ['decl_list', 'S']; dot: 1, 
+Production: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt']; dot: 0, 
+Production: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt']; dot: 0, 
+Production: decl -> ['const_decl']; dot: 0, 
+Production: decl -> ['var_decl']; dot: 0, 
+Production: stmt -> ['simple_stmt']; dot: 0, 
+Production: stmt -> ['struct_stmt']; dot: 0}
+, 
+State: {
+Production: simple_stmt -> ['assign_stmt']; dot: 1}
+, 
+State: {
+Production: stmt -> ['simple_stmt']; dot: 1}
+, 
+State: {
+Production: S0 -> ['S']; dot: 1}
+, 
+State: {
+Production: struct_stmt -> ['if_stmt']; dot: 1}
+, 
+State: {
+Production: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';']; dot: 0, 
+Production: var_decl -> ['#', 'type', 'identifier', ';']; dot: 0, 
+Production: decl_list -> ['decl', 'decl_list']; dot: 0, 
+Production: decl_list -> ['decl', 'decl_list']; dot: 1, 
+Production: decl -> ['var_decl']; dot: 0, 
+Production: decl_list -> ['decl']; dot: 0, 
+Production: decl -> ['const_decl']; dot: 0, 
+Production: const_decl -> ['constant', '#', 'type', 'identifier', '=', 'expression', ';']; dot: 0}
+, 
+State: {
+Production: decl_list -> ['decl']; dot: 1}
+, 
+State: {
+Production: stmt_list -> ['stmt']; dot: 1}
+, 
+State: {
+Production: assign_stmt -> ['identifier', '=', 'expression', ';']; dot: 0, 
+Production: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}']; dot: 0, 
+Production: simple_stmt -> ['assign_stmt']; dot: 0, 
+Production: simple_stmt -> ['io_stmt']; dot: 0, 
+Production: stmt_list -> ['stmt', 'stmt_list']; dot: 1, 
+Production: stmt_list -> ['stmt']; dot: 0, 
+Production: stmt -> ['simple_stmt']; dot: 0, 
+Production: stmt_list -> ['stmt', 'stmt_list']; dot: 0, 
+Production: stmt -> ['struct_stmt']; dot: 0, 
+Production: io_stmt -> ['r', '(', 'identifier', ')', ';']; dot: 0, 
+Production: io_stmt -> ['w', '(', 'string_exp', ')', ';']; dot: 0, 
+Production: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt']; dot: 0, 
+Production: struct_stmt -> ['if_stmt']; dot: 0, 
+Production: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt']; dot: 0, 
+Production: struct_stmt -> ['while_stmt']; dot: 0}
+, 
+State: {
+Production: factor -> ['(', 'expression', ')']; dot: 0, 
+Production: factor -> ['identifier']; dot: 0, 
+Production: factor -> ['integer']; dot: 0, 
+Production: term -> ['factor', '*', 'term']; dot: 0, 
+Production: term -> ['factor', '/', 'term']; dot: 0, 
+Production: term -> ['factor', '%', 'term']; dot: 0, 
+Production: term -> ['factor']; dot: 0, 
+Production: expression -> ['term']; dot: 0, 
+Production: expression -> ['term', '+', 'expression']; dot: 0, 
+Production: condition -> ['expression', 'relation', 'expression']; dot: 0, 
+Production: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt']; dot: 1, 
+Production: expression -> ['term', '-', 'expression']; dot: 0}
+, 
+State: {
+Production: factor -> ['(', 'expression', ')']; dot: 0, 
+Production: factor -> ['identifier']; dot: 0, 
+Production: factor -> ['integer']; dot: 0, 
+Production: term -> ['factor', '*', 'term']; dot: 0, 
+Production: term -> ['factor', '/', 'term']; dot: 0, 
+Production: term -> ['factor', '%', 'term']; dot: 0, 
+Production: term -> ['factor']; dot: 0, 
+Production: expression -> ['term']; dot: 0, 
+Production: expression -> ['term', '+', 'expression']; dot: 0, 
+Production: condition -> ['expression', 'relation', 'expression']; dot: 0, 
+Production: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt']; dot: 1, 
+Production: expression -> ['term', '-', 'expression']; dot: 0}
+, 
+State: {
+Production: type_const -> ['string']; dot: 0, 
+Production: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';']; dot: 1, 
+Production: type_const -> ['bool']; dot: 0, 
+Production: array_decl -> ['[', 'type_const', ']']; dot: 0, 
+Production: type -> ['type_const']; dot: 0, 
+Production: type_const -> ['int']; dot: 0, 
+Production: type -> ['array_decl']; dot: 0}
+, 
+State: {
+Production: type_const -> ['string']; dot: 0, 
+Production: var_decl -> ['#', 'type', 'identifier', ';']; dot: 1, 
+Production: type_const -> ['bool']; dot: 0, 
+Production: array_decl -> ['[', 'type_const', ']']; dot: 0, 
+Production: type -> ['type_const']; dot: 0, 
+Production: type_const -> ['int']; dot: 0, 
+Production: type -> ['array_decl']; dot: 0}
+, 
+State: {
+Production: const_decl -> ['constant', '#', 'type', 'identifier', '=', 'expression', ';']; dot: 1}
+, 
+State: {
+Production: io_stmt -> ['r', '(', 'identifier', ')', ';']; dot: 1}
+, 
+State: {
+Production: assign_stmt -> ['identifier', '=', 'expression', ';']; dot: 1}
+, 
+State: {
+Production: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}']; dot: 1, 
+Production: factor -> ['(', 'expression', ')']; dot: 0, 
+Production: factor -> ['identifier']; dot: 0, 
+Production: factor -> ['integer']; dot: 0, 
+Production: term -> ['factor', '*', 'term']; dot: 0, 
+Production: term -> ['factor', '/', 'term']; dot: 0, 
+Production: term -> ['factor', '%', 'term']; dot: 0, 
+Production: term -> ['factor']; dot: 0, 
+Production: expression -> ['term', '+', 'expression']; dot: 0, 
+Production: expression -> ['term', '-', 'expression']; dot: 0, 
+Production: condition -> ['expression', 'relation', 'expression']; dot: 0, 
+Production: expression -> ['term']; dot: 0}
+, 
+State: {
+Production: io_stmt -> ['w', '(', 'string_exp', ')', ';']; dot: 1}
+, 
+State: {
+Production: S -> ['stmt_list', 'S']; dot: 2}
+, 
+State: {
+Production: S -> ['decl_list', 'S']; dot: 2}
+, 
+State: {
+Production: decl_list -> ['decl', 'decl_list']; dot: 2}
+, 
+State: {
+Production: stmt_list -> ['stmt', 'stmt_list']; dot: 2}
+, 
+State: {
+Production: term -> ['factor', '*', 'term']; dot: 1}
+, 
+State: {
+Production: term -> ['factor', '/', 'term']; dot: 1}
+, 
+State: {
+Production: term -> ['factor', '%', 'term']; dot: 1}
+, 
+State: {
+Production: term -> ['factor']; dot: 1}
+, 
+State: {
+Production: expression -> ['term']; dot: 1}
+, 
+State: {
+Production: expression -> ['term', '+', 'expression']; dot: 1}
+, 
+State: {
+Production: expression -> ['term', '-', 'expression']; dot: 1}
+, 
+State: {
+Production: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt']; dot: 2}
+, 
+State: {
+Production: relation -> ['=']; dot: 0, 
+Production: relation -> ['>=']; dot: 0, 
+Production: relation -> ['<']; dot: 0, 
+Production: relation -> ['>']; dot: 0, 
+Production: relation -> ['!=']; dot: 0, 
+Production: condition -> ['expression', 'relation', 'expression']; dot: 1, 
+Production: relation -> ['<=']; dot: 0}
+, 
+State: {
+Production: factor -> ['integer']; dot: 1}
+, 
+State: {
+Production: factor -> ['identifier']; dot: 1}
+, 
+State: {
+Production: factor -> ['(', 'expression', ')']; dot: 1, 
+Production: factor -> ['(', 'expression', ')']; dot: 0, 
+Production: factor -> ['identifier']; dot: 0, 
+Production: term -> ['factor', '*', 'term']; dot: 0, 
+Production: term -> ['factor', '/', 'term']; dot: 0, 
+Production: term -> ['factor', '%', 'term']; dot: 0, 
+Production: term -> ['factor']; dot: 0, 
+Production: expression -> ['term']; dot: 0, 
+Production: expression -> ['term', '+', 'expression']; dot: 0, 
+Production: factor -> ['integer']; dot: 0, 
+Production: expression -> ['term', '-', 'expression']; dot: 0}
+, 
+State: {
+Production: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt']; dot: 2}
+, 
+State: {
+Production: type -> ['type_const']; dot: 1}
+, 
+State: {
+Production: type -> ['array_decl']; dot: 1}
+, 
+State: {
+Production: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';']; dot: 2}
+, 
+State: {
+Production: type_const -> ['int']; dot: 1}
+, 
+State: {
+Production: type_const -> ['string']; dot: 1}
+, 
+State: {
+Production: type_const -> ['int']; dot: 0, 
+Production: array_decl -> ['[', 'type_const', ']']; dot: 1, 
+Production: type_const -> ['bool']; dot: 0, 
+Production: type_const -> ['string']; dot: 0}
+, 
+State: {
+Production: type_const -> ['bool']; dot: 1}
+, 
+State: {
+Production: var_decl -> ['#', 'type', 'identifier', ';']; dot: 2}
+, 
+State: {
+Production: type_const -> ['string']; dot: 0, 
+Production: type_const -> ['bool']; dot: 0, 
+Production: array_decl -> ['[', 'type_const', ']']; dot: 0, 
+Production: type -> ['type_const']; dot: 0, 
+Production: type_const -> ['int']; dot: 0, 
+Production: type -> ['array_decl']; dot: 0, 
+Production: const_decl -> ['constant', '#', 'type', 'identifier', '=', 'expression', ';']; dot: 2}
+, 
+State: {
+Production: io_stmt -> ['r', '(', 'identifier', ')', ';']; dot: 2}
+, 
+State: {
+Production: assign_stmt -> ['identifier', '=', 'expression', ';']; dot: 2, 
+Production: factor -> ['(', 'expression', ')']; dot: 0, 
+Production: factor -> ['identifier']; dot: 0, 
+Production: factor -> ['integer']; dot: 0, 
+Production: term -> ['factor', '*', 'term']; dot: 0, 
+Production: term -> ['factor', '/', 'term']; dot: 0, 
+Production: term -> ['factor', '%', 'term']; dot: 0, 
+Production: term -> ['factor']; dot: 0, 
+Production: expression -> ['term']; dot: 0, 
+Production: expression -> ['term', '+', 'expression']; dot: 0, 
+Production: expression -> ['term', '-', 'expression']; dot: 0}
+, 
+State: {
+Production: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}']; dot: 2}
+, 
+State: {
+Production: string_exp -> ['identifier']; dot: 0, 
+Production: string_exp -> ['string']; dot: 0, 
+Production: io_stmt -> ['w', '(', 'string_exp', ')', ';']; dot: 2}
+, 
+State: {
+Production: factor -> ['(', 'expression', ')']; dot: 0, 
+Production: factor -> ['identifier']; dot: 0, 
+Production: factor -> ['integer']; dot: 0, 
+Production: term -> ['factor', '/', 'term']; dot: 0, 
+Production: term -> ['factor', '*', 'term']; dot: 2, 
+Production: term -> ['factor']; dot: 0, 
+Production: term -> ['factor', '%', 'term']; dot: 0, 
+Production: term -> ['factor', '*', 'term']; dot: 0}
+, 
+State: {
+Production: factor -> ['(', 'expression', ')']; dot: 0, 
+Production: factor -> ['identifier']; dot: 0, 
+Production: factor -> ['integer']; dot: 0, 
+Production: term -> ['factor', '/', 'term']; dot: 0, 
+Production: term -> ['factor', '/', 'term']; dot: 2, 
+Production: term -> ['factor']; dot: 0, 
+Production: term -> ['factor', '%', 'term']; dot: 0, 
+Production: term -> ['factor', '*', 'term']; dot: 0}
+, 
+State: {
+Production: factor -> ['(', 'expression', ')']; dot: 0, 
+Production: factor -> ['identifier']; dot: 0, 
+Production: factor -> ['integer']; dot: 0, 
+Production: term -> ['factor', '/', 'term']; dot: 0, 
+Production: term -> ['factor', '%', 'term']; dot: 2, 
+Production: term -> ['factor']; dot: 0, 
+Production: term -> ['factor', '%', 'term']; dot: 0, 
+Production: term -> ['factor', '*', 'term']; dot: 0}
+, 
+State: {
+Production: factor -> ['(', 'expression', ')']; dot: 0, 
+Production: factor -> ['identifier']; dot: 0, 
+Production: factor -> ['integer']; dot: 0, 
+Production: term -> ['factor', '*', 'term']; dot: 0, 
+Production: term -> ['factor', '/', 'term']; dot: 0, 
+Production: term -> ['factor', '%', 'term']; dot: 0, 
+Production: term -> ['factor']; dot: 0, 
+Production: expression -> ['term']; dot: 0, 
+Production: expression -> ['term', '+', 'expression']; dot: 2, 
+Production: expression -> ['term', '+', 'expression']; dot: 0, 
+Production: expression -> ['term', '-', 'expression']; dot: 0}
+, 
+State: {
+Production: factor -> ['(', 'expression', ')']; dot: 0, 
+Production: factor -> ['identifier']; dot: 0, 
+Production: factor -> ['integer']; dot: 0, 
+Production: term -> ['factor', '*', 'term']; dot: 0, 
+Production: term -> ['factor', '/', 'term']; dot: 0, 
+Production: term -> ['factor', '%', 'term']; dot: 0, 
+Production: term -> ['factor']; dot: 0, 
+Production: expression -> ['term']; dot: 0, 
+Production: expression -> ['term', '-', 'expression']; dot: 2, 
+Production: expression -> ['term', '+', 'expression']; dot: 0, 
+Production: expression -> ['term', '-', 'expression']; dot: 0}
+, 
+State: {
+Production: assign_stmt -> ['identifier', '=', 'expression', ';']; dot: 0, 
+Production: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}']; dot: 0, 
+Production: simple_stmt -> ['assign_stmt']; dot: 0, 
+Production: simple_stmt -> ['io_stmt']; dot: 0, 
+Production: stmt_list -> ['stmt']; dot: 0, 
+Production: stmt_list -> ['stmt', 'stmt_list']; dot: 0, 
+Production: stmt -> ['simple_stmt']; dot: 0, 
+Production: stmt -> ['struct_stmt']; dot: 0, 
+Production: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt']; dot: 3, 
+Production: io_stmt -> ['r', '(', 'identifier', ')', ';']; dot: 0, 
+Production: io_stmt -> ['w', '(', 'string_exp', ')', ';']; dot: 0, 
+Production: struct_stmt -> ['if_stmt']; dot: 0, 
+Production: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt']; dot: 0, 
+Production: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt']; dot: 0, 
+Production: struct_stmt -> ['while_stmt']; dot: 0}
+, 
+State: {
+Production: factor -> ['(', 'expression', ')']; dot: 0, 
+Production: factor -> ['identifier']; dot: 0, 
+Production: factor -> ['integer']; dot: 0, 
+Production: term -> ['factor', '*', 'term']; dot: 0, 
+Production: term -> ['factor', '/', 'term']; dot: 0, 
+Production: term -> ['factor', '%', 'term']; dot: 0, 
+Production: term -> ['factor']; dot: 0, 
+Production: expression -> ['term', '+', 'expression']; dot: 0, 
+Production: expression -> ['term', '-', 'expression']; dot: 0, 
+Production: condition -> ['expression', 'relation', 'expression']; dot: 2, 
+Production: expression -> ['term']; dot: 0}
+, 
+State: {
+Production: relation -> ['>=']; dot: 1}
+, 
+State: {
+Production: relation -> ['>']; dot: 1}
+, 
+State: {
+Production: relation -> ['<=']; dot: 1}
+, 
+State: {
+Production: relation -> ['<']; dot: 1}
+, 
+State: {
+Production: relation -> ['!=']; dot: 1}
+, 
+State: {
+Production: relation -> ['=']; dot: 1}
+, 
+State: {
+Production: factor -> ['(', 'expression', ')']; dot: 2}
+, 
+State: {
+Production: assign_stmt -> ['identifier', '=', 'expression', ';']; dot: 0, 
+Production: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}']; dot: 0, 
+Production: simple_stmt -> ['assign_stmt']; dot: 0, 
+Production: simple_stmt -> ['io_stmt']; dot: 0, 
+Production: stmt_list -> ['stmt']; dot: 0, 
+Production: stmt_list -> ['stmt', 'stmt_list']; dot: 0, 
+Production: stmt -> ['simple_stmt']; dot: 0, 
+Production: stmt -> ['struct_stmt']; dot: 0, 
+Production: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt']; dot: 3, 
+Production: io_stmt -> ['r', '(', 'identifier', ')', ';']; dot: 0, 
+Production: io_stmt -> ['w', '(', 'string_exp', ')', ';']; dot: 0, 
+Production: struct_stmt -> ['if_stmt']; dot: 0, 
+Production: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt']; dot: 0, 
+Production: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt']; dot: 0, 
+Production: struct_stmt -> ['while_stmt']; dot: 0}
+, 
+State: {
+Production: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';']; dot: 3}
+, 
+State: {
+Production: array_decl -> ['[', 'type_const', ']']; dot: 2}
+, 
+State: {
+Production: var_decl -> ['#', 'type', 'identifier', ';']; dot: 3}
+, 
+State: {
+Production: const_decl -> ['constant', '#', 'type', 'identifier', '=', 'expression', ';']; dot: 3}
+, 
+State: {
+Production: io_stmt -> ['r', '(', 'identifier', ')', ';']; dot: 3}
+, 
+State: {
+Production: assign_stmt -> ['identifier', '=', 'expression', ';']; dot: 3}
+, 
+State: {
+Production: assign_stmt -> ['identifier', '=', 'expression', ';']; dot: 0, 
+Production: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}']; dot: 3, 
+Production: simple_stmt -> ['assign_stmt']; dot: 0, 
+Production: simple_stmt -> ['io_stmt']; dot: 0, 
+Production: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}']; dot: 0, 
+Production: stmt_list -> ['stmt']; dot: 0, 
+Production: stmt_list -> ['stmt', 'stmt_list']; dot: 0, 
+Production: stmt -> ['simple_stmt']; dot: 0, 
+Production: stmt -> ['struct_stmt']; dot: 0, 
+Production: io_stmt -> ['r', '(', 'identifier', ')', ';']; dot: 0, 
+Production: io_stmt -> ['w', '(', 'string_exp', ')', ';']; dot: 0, 
+Production: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt']; dot: 0, 
+Production: struct_stmt -> ['if_stmt']; dot: 0, 
+Production: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt']; dot: 0, 
+Production: struct_stmt -> ['while_stmt']; dot: 0}
+, 
+State: {
+Production: io_stmt -> ['w', '(', 'string_exp', ')', ';']; dot: 3}
+, 
+State: {
+Production: string_exp -> ['string']; dot: 1}
+, 
+State: {
+Production: string_exp -> ['identifier']; dot: 1}
+, 
+State: {
+Production: term -> ['factor', '*', 'term']; dot: 3}
+, 
+State: {
+Production: term -> ['factor', '/', 'term']; dot: 3}
+, 
+State: {
+Production: term -> ['factor', '%', 'term']; dot: 3}
+, 
+State: {
+Production: expression -> ['term', '+', 'expression']; dot: 3}
+, 
+State: {
+Production: expression -> ['term', '-', 'expression']; dot: 3}
+, 
+State: {
+Production: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt']; dot: 4}
+, 
+State: {
+Production: condition -> ['expression', 'relation', 'expression']; dot: 3}
+, 
+State: {
+Production: factor -> ['(', 'expression', ')']; dot: 3}
+, 
+State: {
+Production: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt']; dot: 4}
+, 
+State: {
+Production: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';']; dot: 4, 
+Production: factor -> ['(', 'expression', ')']; dot: 0, 
+Production: factor -> ['identifier']; dot: 0, 
+Production: factor -> ['integer']; dot: 0, 
+Production: term -> ['factor', '*', 'term']; dot: 0, 
+Production: term -> ['factor', '/', 'term']; dot: 0, 
+Production: term -> ['factor', '%', 'term']; dot: 0, 
+Production: term -> ['factor']; dot: 0, 
+Production: expression -> ['term']; dot: 0, 
+Production: expression -> ['term', '+', 'expression']; dot: 0, 
+Production: expression -> ['term', '-', 'expression']; dot: 0}
+, 
+State: {
+Production: array_decl -> ['[', 'type_const', ']']; dot: 3}
+, 
+State: {
+Production: var_decl -> ['#', 'type', 'identifier', ';']; dot: 4}
+, 
+State: {
+Production: const_decl -> ['constant', '#', 'type', 'identifier', '=', 'expression', ';']; dot: 4}
+, 
+State: {
+Production: io_stmt -> ['r', '(', 'identifier', ')', ';']; dot: 4}
+, 
+State: {
+Production: assign_stmt -> ['identifier', '=', 'expression', ';']; dot: 4}
+, 
+State: {
+Production: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}']; dot: 4}
+, 
+State: {
+Production: io_stmt -> ['w', '(', 'string_exp', ')', ';']; dot: 4}
+, 
+State: {
+Production: temp_elif_stmt -> ['temp_elif_stmt', 'elif_stmt']; dot: 0, 
+Production: temp_elif_stmt -> ['E']; dot: 0, 
+Production: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt']; dot: 5}
+, 
+State: {
+Production: temp_elif_stmt -> ['temp_elif_stmt', 'elif_stmt']; dot: 0, 
+Production: temp_elif_stmt -> ['E']; dot: 0, 
+Production: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt']; dot: 5}
+, 
+State: {
+Production: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';']; dot: 5}
+, 
+State: {
+Production: factor -> ['(', 'expression', ')']; dot: 0, 
+Production: factor -> ['identifier']; dot: 0, 
+Production: factor -> ['integer']; dot: 0, 
+Production: term -> ['factor', '*', 'term']; dot: 0, 
+Production: term -> ['factor', '/', 'term']; dot: 0, 
+Production: term -> ['factor', '%', 'term']; dot: 0, 
+Production: term -> ['factor']; dot: 0, 
+Production: expression -> ['term', '+', 'expression']; dot: 0, 
+Production: expression -> ['term', '-', 'expression']; dot: 0, 
+Production: const_decl -> ['constant', '#', 'type', 'identifier', '=', 'expression', ';']; dot: 5, 
+Production: expression -> ['term']; dot: 0}
+, 
+State: {
+Production: io_stmt -> ['r', '(', 'identifier', ')', ';']; dot: 5}
+, 
+State: {
+Production: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}']; dot: 5}
+, 
+State: {
+Production: io_stmt -> ['w', '(', 'string_exp', ')', ';']; dot: 5}
+, 
+State: {
+Production: elif_stmt -> ['elif', 'condition', '{', 'stmt_list', '}']; dot: 0, 
+Production: temp_elif_stmt -> ['temp_elif_stmt', 'elif_stmt']; dot: 1}
+, 
+State: {
+Production: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt']; dot: 6}
+, 
+State: {
+Production: temp_elif_stmt -> ['E']; dot: 1}
+, 
+State: {
+Production: else_stmt -> ['else', '{', 'stmt_list', '}']; dot: 0, 
+Production: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt']; dot: 6}
+, 
+State: {
+Production: var_decl -> ['#', 'type', 'identifier', '=', 'expression', ';']; dot: 6}
+, 
+State: {
+Production: const_decl -> ['constant', '#', 'type', 'identifier', '=', 'expression', ';']; dot: 6}
+, 
+State: {
+Production: temp_elif_stmt -> ['temp_elif_stmt', 'elif_stmt']; dot: 2}
+, 
+State: {
+Production: factor -> ['(', 'expression', ')']; dot: 0, 
+Production: factor -> ['identifier']; dot: 0, 
+Production: factor -> ['integer']; dot: 0, 
+Production: term -> ['factor', '*', 'term']; dot: 0, 
+Production: term -> ['factor', '/', 'term']; dot: 0, 
+Production: term -> ['factor', '%', 'term']; dot: 0, 
+Production: term -> ['factor']; dot: 0, 
+Production: expression -> ['term', '+', 'expression']; dot: 0, 
+Production: expression -> ['term', '-', 'expression']; dot: 0, 
+Production: condition -> ['expression', 'relation', 'expression']; dot: 0, 
+Production: elif_stmt -> ['elif', 'condition', '{', 'stmt_list', '}']; dot: 1, 
+Production: expression -> ['term']; dot: 0}
+, 
+State: {
+Production: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt']; dot: 7}
+, 
+State: {
+Production: else_stmt -> ['else', '{', 'stmt_list', '}']; dot: 1}
+, 
+State: {
+Production: const_decl -> ['constant', '#', 'type', 'identifier', '=', 'expression', ';']; dot: 7}
+, 
+State: {
+Production: elif_stmt -> ['elif', 'condition', '{', 'stmt_list', '}']; dot: 2}
+, 
+State: {
+Production: assign_stmt -> ['identifier', '=', 'expression', ';']; dot: 0, 
+Production: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}']; dot: 0, 
+Production: simple_stmt -> ['assign_stmt']; dot: 0, 
+Production: simple_stmt -> ['io_stmt']; dot: 0, 
+Production: else_stmt -> ['else', '{', 'stmt_list', '}']; dot: 2, 
+Production: stmt_list -> ['stmt']; dot: 0, 
+Production: stmt -> ['simple_stmt']; dot: 0, 
+Production: stmt_list -> ['stmt', 'stmt_list']; dot: 0, 
+Production: stmt -> ['struct_stmt']; dot: 0, 
+Production: io_stmt -> ['r', '(', 'identifier', ')', ';']; dot: 0, 
+Production: io_stmt -> ['w', '(', 'string_exp', ')', ';']; dot: 0, 
+Production: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt']; dot: 0, 
+Production: struct_stmt -> ['if_stmt']; dot: 0, 
+Production: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt']; dot: 0, 
+Production: struct_stmt -> ['while_stmt']; dot: 0}
+, 
+State: {
+Production: assign_stmt -> ['identifier', '=', 'expression', ';']; dot: 0, 
+Production: while_stmt -> ['loop', 'condition', '{', 'stmt_list', '}']; dot: 0, 
+Production: simple_stmt -> ['assign_stmt']; dot: 0, 
+Production: simple_stmt -> ['io_stmt']; dot: 0, 
+Production: stmt_list -> ['stmt']; dot: 0, 
+Production: stmt -> ['simple_stmt']; dot: 0, 
+Production: stmt_list -> ['stmt', 'stmt_list']; dot: 0, 
+Production: stmt -> ['struct_stmt']; dot: 0, 
+Production: io_stmt -> ['r', '(', 'identifier', ')', ';']; dot: 0, 
+Production: io_stmt -> ['w', '(', 'string_exp', ')', ';']; dot: 0, 
+Production: elif_stmt -> ['elif', 'condition', '{', 'stmt_list', '}']; dot: 3, 
+Production: struct_stmt -> ['if_stmt']; dot: 0, 
+Production: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt']; dot: 0, 
+Production: if_stmt -> ['if', 'condition', '{', 'stmt_list', '}', 'temp_elif_stmt', 'else_stmt']; dot: 0, 
+Production: struct_stmt -> ['while_stmt']; dot: 0}
+, 
+State: {
+Production: else_stmt -> ['else', '{', 'stmt_list', '}']; dot: 3}
+, 
+State: {
+Production: elif_stmt -> ['elif', 'condition', '{', 'stmt_list', '}']; dot: 4}
+, 
+State: {
+Production: else_stmt -> ['else', '{', 'stmt_list', '}']; dot: 4}
+, 
+State: {
+Production: elif_stmt -> ['elif', 'condition', '{', 'stmt_list', '}']; dot: 5}
+], {(0, 'var_decl'): 1, (0, 'stmt_list'): 2, (0, 'io_stmt'): 3, (0, 'struct_stmt'): 4, (0, 'const_decl'): 5, (0, 'while_stmt'): 6, (0, 'decl_list'): 7, (0, 'assign_stmt'): 8, (0, 'simple_stmt'): 9, (0, 'S'): 10, (0, 'if_stmt'): 11, (0, 'decl'): 13, (0, 'stmt'): 15, (0, 'if'): 17, (0, '#'): 19, (0, 'constant'): 20, (0, 'r'): 21, (0, 'identifier'): 22, (0, 'loop'): 23, (0, 'w'): 24, (2, 'var_decl'): 1, (2, 'stmt_list'): 2, (2, 'io_stmt'): 3, (2, 'struct_stmt'): 4, (2, 'const_decl'): 5, (2, 'while_stmt'): 6, (2, 'decl_list'): 7, (2, 'assign_stmt'): 8, (2, 'simple_stmt'): 9, (2, 'S'): 25, (2, 'if_stmt'): 11, (2, 'decl'): 12, (2, 'stmt'): 15, (2, 'if'): 17, (2, '#'): 19, (2, 'constant'): 20, (2, 'r'): 21, (2, 'identifier'): 22, (2, 'loop'): 23, (2, 'w'): 24, (7, 'var_decl'): 1, (7, 'stmt_list'): 2, (7, 'io_stmt'): 3, (7, 'struct_stmt'): 4, (7, 'const_decl'): 5, (7, 'while_stmt'): 6, (7, 'decl_list'): 7, (7, 'assign_stmt'): 8, (7, 'simple_stmt'): 9, (7, 'S'): 26, (7, 'if_stmt'): 11, (7, 'decl'): 12, (7, 'stmt'): 15, (7, 'if'): 17, (7, '#'): 19, (7, 'constant'): 20, (7, 'r'): 21, (7, 'identifier'): 22, (7, 'loop'): 23, (7, 'w'): 24, (12, 'var_decl'): 1, (12, 'const_decl'): 5, (12, 'decl_list'): 27, (12, 'decl'): 13, (12, '#'): 19, (12, 'constant'): 20, (15, 'stmt_list'): 28, (15, 'io_stmt'): 3, (15, 'struct_stmt'): 4, (15, 'while_stmt'): 6, (15, 'assign_stmt'): 8, (15, 'simple_stmt'): 9, (15, 'if_stmt'): 11, (15, 'stmt'): 15, (15, 'if'): 17, (15, 'r'): 21, (15, 'identifier'): 22, (15, 'loop'): 23, (15, 'w'): 24, (16, 'factor'): 32, (16, 'term'): 35, (16, 'condition'): 36, (16, 'expression'): 37, (16, 'integer'): 38, (16, 'identifier'): 39, (16, '('): 40, (17, 'factor'): 32, (17, 'term'): 35, (17, 'condition'): 41, (17, 'expression'): 37, (17, 'integer'): 38, (17, 'identifier'): 39, (17, '('): 40, (18, 'type_const'): 42, (18, 'array_decl'): 43, (18, 'type'): 44, (18, 'int'): 45, (18, 'string'): 46, (18, '['): 47, (18, 'bool'): 48, (19, 'type_const'): 42, (19, 'array_decl'): 43, (19, 'type'): 49, (19, 'int'): 45, (19, 'string'): 46, (19, '['): 47, (19, 'bool'): 48, (20, '#'): 50, (21, '('): 51, (22, '='): 52, (23, 'factor'): 32, (23, 'term'): 33, (23, 'condition'): 53, (23, 'expression'): 37, (23, 'integer'): 38, (23, 'identifier'): 39, (23, '('): 40, (24, '('): 54, (29, '*'): 55, (30, '/'): 56, (31, '%'): 57, (34, '+'): 58, (35, '-'): 59, (36, '{'): 60, (37, 'relation'): 61, (37, '>='): 62, (37, '>'): 63, (37, '<='): 64, (37, '<'): 65, (37, '!='): 66, (37, '='): 67, (40, 'factor'): 32, (40, 'term'): 35, (40, 'expression'): 68, (40, 'integer'): 38, (40, 'identifier'): 39, (40, '('): 40, (41, '{'): 69, (44, 'identifier'): 70, (47, 'type_const'): 71, (47, 'int'): 45, (47, 'string'): 46, (47, 'bool'): 48, (49, 'identifier'): 72, (50, 'type_const'): 42, (50, 'array_decl'): 43, (50, 'type'): 73, (50, 'int'): 45, (50, 'string'): 46, (50, '['): 47, (50, 'bool'): 48, (51, 'identifier'): 74, (52, 'factor'): 32, (52, 'term'): 35, (52, 'expression'): 75, (52, 'integer'): 38, (52, 'identifier'): 39, (52, '('): 40, (53, '{'): 76, (54, 'string_exp'): 77, (54, 'string'): 78, (54, 'identifier'): 79, (55, 'factor'): 29, (55, 'term'): 80, (55, 'integer'): 38, (55, 'identifier'): 39, (55, '('): 40, (56, 'factor'): 29, (56, 'term'): 81, (56, 'integer'): 38, (56, 'identifier'): 39, (56, '('): 40, (57, 'factor'): 29, (57, 'term'): 82, (57, 'integer'): 38, (57, 'identifier'): 39, (57, '('): 40, (58, 'factor'): 32, (58, 'term'): 35, (58, 'expression'): 83, (58, 'integer'): 38, (58, 'identifier'): 39, (58, '('): 40, (59, 'factor'): 32, (59, 'term'): 35, (59, 'expression'): 84, (59, 'integer'): 38, (59, 'identifier'): 39, (59, '('): 40, (60, 'stmt_list'): 85, (60, 'io_stmt'): 3, (60, 'struct_stmt'): 4, (60, 'while_stmt'): 6, (60, 'assign_stmt'): 8, (60, 'simple_stmt'): 9, (60, 'if_stmt'): 11, (60, 'stmt'): 15, (60, 'if'): 17, (60, 'r'): 21, (60, 'identifier'): 22, (60, 'loop'): 23, (60, 'w'): 24, (61, 'factor'): 32, (61, 'term'): 33, (61, 'expression'): 86, (61, 'integer'): 38, (61, 'identifier'): 39, (61, '('): 40, (68, ')'): 87, (69, 'stmt_list'): 88, (69, 'io_stmt'): 3, (69, 'struct_stmt'): 4, (69, 'while_stmt'): 6, (69, 'assign_stmt'): 8, (69, 'simple_stmt'): 9, (69, 'if_stmt'): 11, (69, 'stmt'): 15, (69, 'if'): 17, (69, 'r'): 21, (69, 'identifier'): 22, (69, 'loop'): 23, (69, 'w'): 24, (70, '='): 89, (71, ']'): 90, (72, ';'): 91, (73, 'identifier'): 92, (74, ')'): 93, (75, ';'): 94, (76, 'stmt_list'): 95, (76, 'io_stmt'): 3, (76, 'struct_stmt'): 4, (76, 'while_stmt'): 6, (76, 'assign_stmt'): 8, (76, 'simple_stmt'): 9, (76, 'if_stmt'): 11, (76, 'stmt'): 15, (76, 'if'): 17, (76, 'r'): 21, (76, 'identifier'): 22, (76, 'loop'): 23, (76, 'w'): 24, (77, ')'): 96, (85, '}'): 97, (88, '}'): 98, (89, 'factor'): 32, (89, 'term'): 35, (89, 'expression'): 99, (89, 'integer'): 38, (89, 'identifier'): 39, (89, '('): 40, (92, '='): 100, (93, ';'): 101, (95, '}'): 102, (96, ';'): 103, (97, 'temp_elif_stmt'): 105, (97, 'E'): 106, (98, 'temp_elif_stmt'): 107, (98, 'E'): 106, (99, ';'): 108, (100, 'factor'): 32, (100, 'term'): 33, (100, 'expression'): 109, (100, 'integer'): 38, (100, 'identifier'): 39, (100, '('): 40, (104, 'elif_stmt'): 110, (104, 'elif'): 111, (107, 'else_stmt'): 112, (107, 'else'): 113, (109, ';'): 114, (111, 'factor'): 32, (111, 'term'): 33, (111, 'condition'): 115, (111, 'expression'): 37, (111, 'integer'): 38, (111, 'identifier'): 39, (111, '('): 40, (113, '{'): 116, (115, '{'): 117, (116, 'stmt_list'): 118, (116, 'io_stmt'): 3, (116, 'struct_stmt'): 4, (116, 'while_stmt'): 6, (116, 'assign_stmt'): 8, (116, 'simple_stmt'): 9, (116, 'if_stmt'): 11, (116, 'stmt'): 15, (116, 'if'): 17, (116, 'r'): 21, (116, 'identifier'): 22, (116, 'loop'): 23, (116, 'w'): 24, (117, 'stmt_list'): 119, (117, 'io_stmt'): 3, (117, 'struct_stmt'): 4, (117, 'while_stmt'): 6, (117, 'assign_stmt'): 8, (117, 'simple_stmt'): 9, (117, 'if_stmt'): 11, (117, 'stmt'): 15, (117, 'if'): 17, (117, 'r'): 21, (117, 'identifier'): 22, (117, 'loop'): 23, (117, 'w'): 24, (118, '}'): 120, (119, '}'): 121})

@@ -1,28 +1,35 @@
-State:
- Item: A -> ['0', 'A'], dot - 0
- Item: S0 -> ['A'], dot - 0
- Item: B -> ['0'], dot - 0
- Item: A -> ['1'], dot - 0
- Item: A -> ['0'], dot - 0
- Item: A -> ['B'], dot - 0
-State:
- Item: B -> ['0'], dot - 1
- Item: A -> ['0', 'A'], dot - 1
- Item: A -> ['0', 'A'], dot - 0
- Item: B -> ['0'], dot - 0
- Item: A -> ['0'], dot - 1
- Item: A -> ['1'], dot - 0
- Item: A -> ['0'], dot - 0
- Item: A -> ['B'], dot - 0
-State:
- Item: A -> ['B'], dot - 1
-State:
- Item: S0 -> ['A'], dot - 1
-State:
- Item: A -> ['1'], dot - 1
-State:
- Item: A -> ['B'], dot - 1
-State:
- Item: A -> ['0', 'A'], dot - 2
-State:
- Item: A -> ['1'], dot - 1
+([
+State: {
+Production: A -> ['0']; dot: 0, 
+Production: A -> ['B']; dot: 0, 
+Production: A -> ['0', 'A']; dot: 0, 
+Production: A -> ['1']; dot: 0, 
+Production: S0 -> ['A']; dot: 0, 
+Production: B -> ['0']; dot: 0}
+, 
+State: {
+Production: A -> ['B']; dot: 1}
+, 
+State: {
+Production: S0 -> ['A']; dot: 1}
+, 
+State: {
+Production: A -> ['1']; dot: 1}
+, 
+State: {
+Production: A -> ['0']; dot: 1}
+, 
+State: {
+Production: A -> ['0', 'A']; dot: 0, 
+Production: A -> ['0']; dot: 0, 
+Production: A -> ['B']; dot: 0, 
+Production: A -> ['1']; dot: 0, 
+Production: A -> ['0', 'A']; dot: 1, 
+Production: B -> ['0']; dot: 0}
+, 
+State: {
+Production: B -> ['0']; dot: 1}
+, 
+State: {
+Production: A -> ['0', 'A']; dot: 2}
+], {(0, 'B'): 1, (0, 'A'): 2, (0, '1'): 3, (0, '0'): 6, (5, 'B'): 1, (5, 'A'): 7, (5, '1'): 3, (5, '0'): 6})

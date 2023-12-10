@@ -1,32 +1,47 @@
-State:
- Item: S -> ['a', 'S'], dot - 0
- Item: S -> ['a', 'S', 'b', 'S'], dot - 0
- Item: S0 -> ['S'], dot - 0
- Item: S -> ['C'], dot - 0
- Item: C -> ['c'], dot - 0
-State:
- Item: S -> ['C'], dot - 1
-State:
- Item: S -> ['a', 'S'], dot - 0
- Item: S -> ['a', 'S', 'b', 'S'], dot - 0
- Item: S -> ['C'], dot - 0
- Item: S -> ['a', 'S'], dot - 1
- Item: C -> ['c'], dot - 0
- Item: S -> ['a', 'S', 'b', 'S'], dot - 1
-State:
- Item: S0 -> ['S'], dot - 1
-State:
- Item: C -> ['c'], dot - 1
-State:
- Item: S -> ['a', 'S', 'b', 'S'], dot - 2
- Item: S -> ['a', 'S'], dot - 2
-State:
- Item: C -> ['c'], dot - 1
-State:
- Item: S -> ['a', 'S'], dot - 0
- Item: S -> ['a', 'S', 'b', 'S'], dot - 0
- Item: S -> ['a', 'S', 'b', 'S'], dot - 3
- Item: S -> ['C'], dot - 0
- Item: C -> ['c'], dot - 0
-State:
- Item: S -> ['a', 'S', 'b', 'S'], dot - 4
+([
+State: {
+Production: S -> ['a', 'S', 'b', 'S']; dot: 0, 
+Production: S -> ['C']; dot: 0, 
+Production: S -> ['a', 'S']; dot: 0, 
+Production: S0 -> ['S']; dot: 0, 
+Production: C -> ['c']; dot: 0}
+, 
+State: {
+Production: S0 -> ['S']; dot: 1}
+, 
+State: {
+Production: S -> ['C']; dot: 1}
+, 
+State: {
+Production: C -> ['c']; dot: 1}
+, 
+State: {
+Production: S -> ['a', 'S', 'b', 'S']; dot: 1, 
+Production: S -> ['a', 'S']; dot: 0, 
+Production: S -> ['C']; dot: 0, 
+Production: S -> ['a', 'S', 'b', 'S']; dot: 0, 
+Production: C -> ['c']; dot: 0}
+, 
+State: {
+Production: S -> ['a', 'S']; dot: 1, 
+Production: S -> ['a', 'S']; dot: 0, 
+Production: S -> ['C']; dot: 0, 
+Production: S -> ['a', 'S', 'b', 'S']; dot: 0, 
+Production: C -> ['c']; dot: 0}
+, 
+State: {
+Production: S -> ['a', 'S', 'b', 'S']; dot: 2}
+, 
+State: {
+Production: S -> ['a', 'S']; dot: 2}
+, 
+State: {
+Production: S -> ['a', 'S', 'b', 'S']; dot: 3, 
+Production: S -> ['a', 'S']; dot: 0, 
+Production: S -> ['C']; dot: 0, 
+Production: S -> ['a', 'S', 'b', 'S']; dot: 0, 
+Production: C -> ['c']; dot: 0}
+, 
+State: {
+Production: S -> ['a', 'S', 'b', 'S']; dot: 4}
+], {(0, 'S'): 1, (0, 'C'): 2, (0, 'c'): 3, (0, 'a'): 5, (4, 'S'): 6, (4, 'C'): 2, (4, 'c'): 3, (4, 'a'): 4, (5, 'S'): 7, (5, 'C'): 2, (5, 'c'): 3, (5, 'a'): 4, (6, 'b'): 8, (8, 'S'): 9, (8, 'C'): 2, (8, 'c'): 3, (8, 'a'): 4})

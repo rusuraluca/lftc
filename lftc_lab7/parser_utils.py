@@ -1,73 +1,74 @@
-class CanonicalCollection:
-    def __init__(self, states=None, adjacency_list=None):
-        self.states = states or []
-        self.adjacency_list = adjacency_list or {}
-
-    def add_state(self, state):
-        self.states.append(state)
-
-    def get_states(self):
-        return self.states
-
-    def get_adjacency_list(self):
-        return self.adjacency_list
-
-    def __len__(self):
-        return len(self.states)
+class ParsingTable:
+    def __init__(self, states, terminals, non_terminals):
+        self.states = states
+        self.nr_rows = len(states)
+        self.nr_cols = len(terminals) + len(non_terminals)
+        self.goto = [[-1 for _ in range(self.nr_cols)] for _ in range(self.nr_rows)]
+        self.action = ["" for _ in range(self.nr_rows)]
+        self.symbols = list(terminals) + list(non_terminals)
 
     def __str__(self):
-        return '\n'.join([str(state) for state in self.states])
+        string = "Parsing Table:\n"
+        string += "{:<4} {:<15} {:<6}\n".format("nr", "action", "goto")
+        string += "{:<4} {:<15}".format("", "")
+        for i in range(self.nr_cols):
+            string += "{:>4}".format(self.symbols[i])
+        string += "\n\n"
+        for i in range(self.nr_rows):
+            string += str("{:<4} {:<15}".format(i, self.action[i]))
+            for j in range(self.nr_cols):
+                string += "{:>4}".format(self.goto[i][j])
+            string += "\n"
 
+        return string
 
 class State:
     def __init__(self, items):
         self.items = items
 
-    def get_items(self):
-        return self.items
-
-    def get_symbols_succeeding_the_dot(self):
-        symbols = set()
-        for item in self.items:
-            if item.get_position_for_dot() < len(item.get_right_hand_side()):
-                symbols.add(item.get_right_hand_side()[item.get_position_for_dot()])
-        return symbols
+    def add(self, e):
+        self.items.add(e)
 
     def __str__(self):
-        items = '\n '.join([str(item) for item in self.items])
-        return f"State:\n {items}"
+        return "State: " + str(self.items)
+
+    def __repr__(self):
+        return "\nState: " + str(self.items) + "\n"
 
     def __eq__(self, other):
-        return self.items == other.items
+        if len(self.items) != len(other.items):
+            return False
+        if len(self.items.intersection(other.items)) == len(self.items):
+            return True
+        return False
+
+    def __ne__(self, other):
+        return not self.__eq__(other)
 
     def __hash__(self):
-        return hash(tuple(self.items))
-
+        return 1
 
 class Item:
-    def __init__(self, left_hand_side, right_hand_side, position_for_dot):
+    def __init__(self, left_hand_side, right_hand_side, position_for_dot=0):
         self.left_hand_side = left_hand_side
         self.right_hand_side = right_hand_side
         self.position_for_dot = position_for_dot
 
-    def get_left_hand_side(self):
-        return self.left_hand_side
-
-    def get_right_hand_side(self):
-        return self.right_hand_side
-
-    def get_position_for_dot(self):
-        return self.position_for_dot
-
-    def __str__(self):
-        return f"Item: {self.left_hand_side} -> {self.right_hand_side}, dot - {self.position_for_dot}"
-
     def __eq__(self, other):
-        return (
-            self.left_hand_side == other.left_hand_side
-            and self.right_hand_side == other.right_hand_side
-            and self.position_for_dot == other.position_for_dot
-        )
+        if self.position_for_dot == other.position_for_dot and \
+                self.left_hand_side == other.left_hand_side and \
+                self.right_hand_side == other.right_hand_side:
+            return True
+        return False
+
+    def __ne__(self, other):
+        return not self.__eq__(other)
 
     def __hash__(self):
-        return hash((self.left_hand_side, tuple(self.right_hand_side), self.position_for_dot))
+        return hash(self.left_hand_side)
+
+    def __str__(self):
+        return "Production: {} -> {}; dot: {}".format(self.left_hand_side, self.right_hand_side, self.position_for_dot)
+
+    def __repr__(self):
+        return "\nProduction: {} -> {}; dot: {}".format(self.left_hand_side, self.right_hand_side, self.position_for_dot)

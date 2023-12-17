@@ -82,7 +82,6 @@ class LR0Parser:
                             if State(goto) not in states:
                                 states.append(State(goto))
                                 edges[(index, symbol)] = len(states) - 1
-                                # TODO: CHECK 4 CONFLICTS
                             else:
                                 edges[(index, symbol)] = states.index(State(goto))
 

@@ -27,18 +27,10 @@ def menu():
 if __name__ == '__main__':
     grammar = Grammar("g1.txt")
     lr0 = LR0Parser(grammar)
-    with open("ccg1.txt", 'w') as f:
-        f.write(str(lr0.canonical_collection()))
-
+    print(lr0.canonical_collection())
 
     grammar = Grammar("g2.txt")
     lr0 = LR0Parser(grammar)
-    with open("ccg2.txt", 'w') as f:
-        f.write(str(lr0.canonical_collection()))
-
-    grammar = Grammar("g3.txt")
-    lr0 = LR0Parser(grammar)
-    with open("ccg3.txt", 'w') as f:
-        f.write(str(lr0.canonical_collection()))
+    print(lr0.canonical_collection())
 
     menu()

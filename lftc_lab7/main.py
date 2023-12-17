@@ -32,16 +32,7 @@ if __name__ == '__main__':
     with open("ptg1.txt", 'w') as f:
         f.write(str(lr0.create_parsing_table()))
     with open("pg1.txt", 'w') as f:
-        f.write(str(lr0.parse("a c b c a c")))
-
-    grammar = Grammar("g3.txt")
-    lr0 = LR0Parser(grammar)
-    with open("ccg3.txt", 'w') as f:
-        f.write(str(lr0.canonical_collection()))
-    with open("ptg3.txt", 'w') as f:
-        f.write(str(lr0.create_parsing_table()))
-    with open("pg3.txt", 'w') as f:
-        f.write(str(lr0.parse("1")))
+        f.write(str(lr0.parse("a c")))
 
     grammar = Grammar("g2.txt")
     lr0 = LR0Parser(grammar)
@@ -50,8 +41,7 @@ if __name__ == '__main__':
     with open("ptg2.txt", 'w') as f:
         f.write(str(lr0.create_parsing_table()))
     with open("pg2.txt", 'w') as f:
-        f.write(str(lr0.parse("+")))
+        f.write(str(lr0.parse("START write ( stringExp ) ; END")))
 
     menu()
-
 

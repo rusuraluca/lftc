@@ -1,2 +1,0 @@
-[
-Production: A -> ['1']; dot: 0]

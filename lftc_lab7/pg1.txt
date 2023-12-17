@@ -1,5 +1,4 @@
 [
 Production: C -> ['c']; dot: 0,
 Production: S -> ['C']; dot: 0,
-Production: S -> ['a', 'S']; dot: 0
-]
+Production: S -> ['a', 'S']; dot: 0]

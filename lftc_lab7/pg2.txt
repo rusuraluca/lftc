@@ -1,6 +1,0 @@
-[
-Production: ioStmt -> ['write', '(', 'stringExp', ')', ';']; dot: 0,
-Production: simplStmt -> ['ioStmt']; dot: 0,
-Production: stmt -> ['simplStmt']; dot: 0,
-Production: tempDecl -> ['stmt']; dot: 0,
-Production: program -> ['START', 'tempDecl', 'END']; dot: 0]

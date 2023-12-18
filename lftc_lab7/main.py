@@ -1,12 +1,17 @@
 from grammar import Grammar
 from lr0 import LR0Parser
+from utils import PIFReader
+
 
 def menu():
+    grammar.read_from("input/g1.txt")
+    print(grammar)
     while True:
         print("\n1: Show all terminals")
         print("2: Show all non terminals")
         print("3: Show all productions")
         print("4: Show productions for non terminal")
+        print("5: Is CFG grammar")
         print("0: exit")
         com = input("->")
         if com == "0":
@@ -16,32 +21,37 @@ def menu():
         elif com == "2":
             print(grammar.get_non_terminals())
         elif com == "3":
-            print(grammar.get_productions())
+            print(grammar.get_str_productions())
         elif com == "4":
-            n_t = input("non terminal: ")
+            n_t = input("Non terminal: ")
             print(grammar.get_productions_for_non_terminal(n_t))
+        elif com == "5":
+            print(grammar.is_cfg())
         else:
             print("Invalid command!")
 
 
-if __name__ == '__main__':
-    grammar = Grammar("g1.txt")
-    lr0 = LR0Parser(grammar)
-    with open("ccg1.txt", 'w') as f:
-        f.write(str(lr0.canonical_collection()))
-    with open("ptg1.txt", 'w') as f:
-        f.write(str(lr0.create_parsing_table()))
-    with open("pg1.txt", 'w') as f:
-        f.write(str(lr0.parse("a c")))
+grammar = Grammar()
 
-    grammar = Grammar("g2.txt")
+
+if __name__ == '__main__':
+    grammar.read_from("input/g1.txt")
     lr0 = LR0Parser(grammar)
-    with open("ccg2.txt", 'w') as f:
-        f.write(str(lr0.canonical_collection()))
-    with open("ptg2.txt", 'w') as f:
-        f.write(str(lr0.create_parsing_table()))
-    with open("pg2.txt", 'w') as f:
-        f.write(str(lr0.parse("START write ( stringExp ) ; END")))
+    lr0.construct_parsing_table()
+    seq = ""
+    with open("input/seq.txt", 'r') as f:
+        for line in f.readlines():
+            line = line.strip()
+            seq += line
+    po = lr0.parse(seq)
+    po.print_to_file(f'output/g1.out')
+
+    grammar.read_from("input/g2.txt")
+    lr0 = LR0Parser(grammar)
+    lr0.construct_parsing_table()
+    pr = PIFReader()
+    pr.readPIF(f'input/PIF.txt')
+    po = lr0.parse(pr.get_keys())
+    po.print_to_file(f'output/g2.out')
 
     menu()
-

@@ -1,160 +1,134 @@
-from queue import Queue
-from parser_utils import Item, State, ParsingTable
-from copy import deepcopy
-
+from typing import Optional
+from utils import Production, State
+from parsing_table import Action, ParsingTable
+from parsing_tree import ParsingTree
 
 class LR0Parser:
     def __init__(self, grammar):
         self.grammar = grammar
-        self.enrich_grammar()
-        self.states = []
+        self.pt: Optional[ParsingTable] = None
 
-    def enrich_grammar(self):
-        P = self.grammar.get_productions()
-        enrich_start_symbol = 'S0'
-        P[enrich_start_symbol] = [[self.grammar.get_starting_symbol()]]
-        self.grammar.set_starting_symbol(enrich_start_symbol)
-        self.grammar.set_productions(P)
+    def closure(self, states):
+        ans = states[:]
+        queue = states[:]
+        while len(queue):
+            state = queue.pop()
+            # print(state)
+            potential_non_terminal = state.string_after_point
+            for prod in self.grammar.get_productions_for_non_terminal(potential_non_terminal):
+                new_state = State(prod, 0)
+                if new_state not in ans:
+                    queue.append(new_state)
+                    ans.append(new_state)
+        return ans
 
-    def get_non_terminal_preceded_by_dot(self, item):
-        try:
-            rhs = item.get_right_hand_side()
-            if item.get_position_for_dot() < len(rhs):
-                term = rhs[item.get_position_for_dot()]
-                if term in self.grammar.get_non_terminals():
-                    return term
-        except Exception as err:
-            print("Error: ", err)
-        return None
-
-    def closure(self, items):
-        closure = set(items)
-
-        pending = Queue()
-
-        for item in items:
-            pending.put(item)
-
-        while not pending.empty():
-            current_item = pending.get()
-            if current_item.position_for_dot < len(current_item.right_hand_side):
-                lhs = current_item.right_hand_side[current_item.position_for_dot]
-                if lhs in self.grammar.non_terminals:
-                    for rhs in self.grammar.productions[lhs]:
-                        prod = Item(lhs, rhs, 0)
-                        if prod not in closure:
-                            closure.add(prod)
-                            pending.put(prod)
-
-        return closure
-
-    def goto(self, state, item):
-        new_state = []
-        for production in state:
-            if production.position_for_dot < len(production.right_hand_side) and production.right_hand_side[production.position_for_dot] == item:
-                production.position_for_dot += 1
-                new_state.append(production)
-        return self.closure(new_state)
+    def goto(self, states, term):
+        return self.closure([state.shift_dot_right() for state in states if state.string_after_point == term])
 
     def canonical_collection(self):
-        initial_item = Item(self.grammar.starting_symbol,
-                            self.grammar.productions[self.grammar.starting_symbol][0],
-                            0)
-        states = [State(self.closure([initial_item]))]
+        init = self.grammar.starting_symbol
+        starting_symbol_state = State(Production("S'", init), 0)
 
-        index = -1
-        edges = {}
+        canonical_collection = []
+        goto_dest = {}
 
-        while index < len(states) - 1:
-            index += 1
+        terms = self.grammar.non_terminals
+        terms.extend(self.grammar.terminals)
 
-            state = states[index]
+        s0 = self.closure([starting_symbol_state])
+        print("s0:", list(map(str, s0)))
+        canonical_collection.append(s0)
+        i = 0
 
-            for symbol in self.grammar.get_all_symbols():
-                goto_productions = []
-                for production in state.items:
-                    if production.position_for_dot < len(production.right_hand_side) and \
-                            production.right_hand_side[production.position_for_dot] == symbol:
-                        goto_productions.append(deepcopy(production))
-                    if len(goto_productions):
-                        goto = self.goto(goto_productions, symbol)
-                        if len(goto) != 0:
-                            if State(goto) not in states:
-                                states.append(State(goto))
-                                edges[(index, symbol)] = len(states) - 1
-                            else:
-                                edges[(index, symbol)] = states.index(State(goto))
+        while i < len(canonical_collection):
+            s = canonical_collection[i]
 
-        return states, edges
+            for term in terms:
+                candidate = self.goto(s, term)
+                if len(candidate) == 0:
+                    continue
 
-    def create_parsing_table(self):
-        states, edges = self.canonical_collection()
-        parsing_table = ParsingTable(states, self.grammar.terminals, self.grammar.non_terminals)
-        for i in range(parsing_table.nr_rows):
-            for j in range(parsing_table.nr_cols):
-                if (i, parsing_table.symbols[j]) in edges.keys():
-                    parsing_table.goto[i][j] = edges[(i, parsing_table.symbols[j])]
-                    parsing_table.action[i] = "s"
+                def add_to_goto_dest(i, term, dest):
+                    if i not in goto_dest:
+                        goto_dest[i] = {}
 
-            if parsing_table.action[i] == "":
-                state = parsing_table.states[i]
-                err = True
-                for production in state.items:
-                    if production.position_for_dot == len(production.right_hand_side):
-                        if production.left_hand_side == self.grammar.starting_symbol:
-                            parsing_table.action[i] = "acc"
-                            err = False
-                            break
-                        else:
-                            idx = self.grammar.productions[production.left_hand_side].index(production.right_hand_side)
-                            # reduce, key in grammar.productions, index in list of productions 4 key
-                            #                             ^
-                            parsing_table.action[i] = "r {} {}".format(production.left_hand_side, idx)
-                            err = False
-                            break
-                if err:
-                    parsing_table.action[i] = "err"
-        return parsing_table
+                    goto_dest[i][term] = dest
 
-    def parse(self, string):
-        parsing_table = self.create_parsing_table()
-        work_stack = ["$", 0]  # Starting state is always the first in this implementation
-        input_stack = string.split() + ["$"]
-        output = []
-        # print("input stack:", input_stack)
-        # print("work stack:", work_stack)
-        # c_symbol = input_stack[0]
-        # c_symbol_idx = parsing_table.symbols.index(c_symbol)
+                try:
+                    si = canonical_collection.index(candidate)
+                    add_to_goto_dest(i, term, si)
+                except ValueError:
+                    print(f"s{len(canonical_collection)} = goto({i}, {term}) = {list(map(str, candidate))}")
+                    add_to_goto_dest(i, term, len(canonical_collection))
+                    canonical_collection.append(candidate)
+
+            i += 1
+
+        return canonical_collection, goto_dest
+
+    def construct_parsing_table(self):
+        cc, gtd = self.canonical_collection()
+
+        self.pt = ParsingTable(self.grammar)
+        self.pt.process_canonical_collection(cc, gtd)
+
+        print(self.pt)
+
+    def parse(self, s):
+        if self.pt is None:
+            self.construct_parsing_table()
+        working_stack = ['$', 0]
+        input_stack = [c for c in s] + ['$']
+        output_stack = []
+
+        def print_current_state():
+            print(f'Work: {working_stack}\t|\t Input: {input_stack}\t|\t Output: {list(map(str, reversed(output_stack)))}')
 
         while True:
-            c_state_idx = work_stack[-1]
-            if parsing_table.action[c_state_idx] == "acc":
-                break
-            elif parsing_table.action[c_state_idx] == "s":
-                c_symbol = input_stack[0]
-                c_symbol_idx = parsing_table.symbols.index(c_symbol)
-                if parsing_table.goto[c_state_idx][c_symbol_idx] != -1:
-                    work_stack.append(input_stack.pop(0))
-                    c_state_idx = parsing_table.goto[c_state_idx][c_symbol_idx]
-                    work_stack.append(c_state_idx)
+            state_no = working_stack[-1]
+            action = self.pt.get_action_for_set(state_no)
 
-            elif parsing_table.action[c_state_idx][0] == "r":
-                r, key, idx = parsing_table.action[c_state_idx].split()
-                idx = int(idx)
-                c_production = Item(key, self.grammar.productions[key][idx])
-                # print("reduce with production:", c_production)
-                work_stack = work_stack[:(len(work_stack) - len(c_production.right_hand_side) * 2)]
-                c_state_idx = work_stack[-1]
-                work_stack.append(c_production.left_hand_side)
-                work_stack.append(
-                    parsing_table.goto[c_state_idx][parsing_table.symbols.index(c_production.left_hand_side)])
-                output.append(c_production)
-            else:
-                print("ERROR")
-                break
+            if action == Action.SHIFT or action == Action.REDUCE:
+                reduce = False
+                if action == Action.SHIFT:
+                    print_current_state()
+                    next_terminal = input_stack[0]
+                    try:
+                        print(f'Shifting... current state = {state_no} \t|\t next terminal = {next_terminal} \t|\t '
+                            f'goTo = {self.pt.get_goto_destination(state_no, next_terminal)}')
+                        next_state_no = self.pt.get_goto_destination(state_no, next_terminal)
+                        input_stack.pop(0)
+                        working_stack.extend([next_terminal, next_state_no])
+                        print()
+                    except:
+                        reduce = True
+                if action == Action.REDUCE or reduce:
+                    print_current_state()
+                    production = self.pt.get_reduction(state_no)
+                    output_stack.append(production)
+                    print("Reducing with production", production)
 
-            # print("input stack:", input_stack)
-            # print("work stack:", work_stack)
-            # print("output:", output)
+                    rhs_terms = production.rhs.split()
+                    while len(rhs_terms):
+                        working_stack.pop(-1)
+                        cur_term = rhs_terms.pop(-1)
+                        if cur_term != working_stack.pop(-1):
+                            raise Exception('Action not allowed in reducing.')
 
-        return output
+                    working_stack.append(production.lhs)
+                    print_current_state()
+                    last_state = working_stack[-2]
+                    last_term = working_stack[-1]
+                    print('Adding a state after reduce: state =', last_state, 'term =', last_term)
+                    next_state_no = self.pt.get_goto_destination(last_state, last_term)
+                    working_stack.append(next_state_no)
+                    print()
+
+            else:  # accept
+                print_current_state()
+                print('Accepting...')
+                output_stack.reverse()
+
+                po = ParsingTree()
+                po.process_parser_output(output_stack)
+                return po

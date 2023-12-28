@@ -1,0 +1,5 @@
+program
+START
+	3number =.+ number;
+	print(3number);
+END

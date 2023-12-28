@@ -1,0 +1,14 @@
+program
+{
+	list int[20] a;
+	int minim = a[0];
+	int id = 0;
+	while id < 20 {
+		if a[id] < minim {
+			minim = a[id];
+		}
+	}
+	out(minim);
+
+}
+

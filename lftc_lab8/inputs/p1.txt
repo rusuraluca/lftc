@@ -1,0 +1,12 @@
+program
+START
+    int a, b, c;
+    int max;
+    if a >= b && a >= c { max = a; }
+    else {
+        if b >= c { max = b; }
+        else {
+            max = c;
+        }
+    }
+END

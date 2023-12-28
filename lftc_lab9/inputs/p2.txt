@@ -1,0 +1,26 @@
+program
+{
+	int number = 251;
+	int ~isprime = 1;
+	if number == 1 || number == 0 {
+		~isprime = 0;
+		return;
+	}
+	if number == 2 {
+		return;
+	}
+	if number % 2 == 0 {
+		~isprime = 0;
+		return;
+	}
+	int div;
+	div = 3;
+	while div * div <= number {
+		if number % div == 0 {
+			~isprime = 0;
+			return;
+		}
+		div + 2;
+	}
+	return;
+}

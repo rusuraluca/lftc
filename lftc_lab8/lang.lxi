@@ -1,0 +1,50 @@
+%{
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int currentLine = 1;
+%}
+
+%option noyywrap
+
+identifier      [a-zA-Z~][a-zA-Z0-9]*
+integer         0|[+|-]?[1-9][0-9]*
+char            [\'][a-zA-z0-9][\']
+string          [\"][a-zA-z0-9]*[\"]
+
+%%
+
+"program"|"list"|"int"|"char"|"string"|"while"|"for"|"var"|"START"|"END"|"if"|"else"|"out"|"in"|"finish"    {printf("Reserved word: %s\n", yytext);}
+"+"|"-"|"*"|"/"|"%"|"="|"!"|"!="|"=="|"+="|"-="|"/="|"*="|"<"|">"|">="|"<="|"||"|"&&"		                {printf("Operator: %s\n", yytext);}
+"["|"]"|"{"|"}"|"("|")"|","|";"|"'"|"\""                                                                    {printf("Separator: %s\n", yytext);}
+{identifier}		                                                                                        {printf("Identifier: %s\n", yytext);}
+{integer}		                                                                                            {printf("Number: %s\n", yytext);}
+{char}		                                                                                                {printf("String: %s\n", yytext);}
+{string}		                                                                                            {printf("Character: %s\n", yytext);}
+
+[ \t]+		{}
+[\n]+	{currentLine++;}
+
+[0-9][a-zA-Z0-9]*	   {printf("Illegal identifier at line %d\n", currentLine);}
+".+"                   {printf(".+ is not a recognised operator");}
+
+%%
+
+void main(argc, argv)
+int argc;
+char** argv;
+{
+if (argc > 1)
+{
+    FILE *file;
+    file = fopen(argv[1], "r");
+    if (!file)
+    {
+        fprintf(stderr, "Could not open %s\n", argv[1]);
+        exit(1);
+    }
+    yyin = file;
+}
+
+yylex();
+}

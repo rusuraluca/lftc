@@ -14,7 +14,7 @@ string          [\"][a-zA-z0-9]*[\"]
 
 %%
 
-"program"|"list"|"int"|"char"|"string"|"while"|"for"|"var"|"START"|"END"|"if"|"else"|"out"|"in"|"finish"    {printf("Reserved word: %s\n", yytext);}
+"program"|"list"|"int"|"char"|"string"|"while"|"for"|"var"|"START"|"END"|"if"|"else"|"write"|"in"|"finish"    {printf("Reserved word: %s\n", yytext);}
 "+"|"-"|"*"|"/"|"%"|"="|"!"|"!="|"=="|"+="|"-="|"/="|"*="|"<"|">"|">="|"<="|"||"|"&&"		                {printf("Operator: %s\n", yytext);}
 "["|"]"|"{"|"}"|"("|")"|","|";"|"'"|"\""                                                                    {printf("Separator: %s\n", yytext);}
 {identifier}		                                                                                        {printf("Identifier: %s\n", yytext);}

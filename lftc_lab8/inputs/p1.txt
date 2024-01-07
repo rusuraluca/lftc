@@ -1,12 +1,16 @@
 program
 START
-    int a, b, c;
+    int x, y, z;
     int max;
-    if a >= b && a >= c { max = a; }
+    if x >= y && x >= z {
+        max = x;
+    }
     else {
-        if b >= c { max = b; }
+        if y >= z {
+            max = y;
+        }
         else {
-            max = c;
+            max = z;
         }
     }
 END

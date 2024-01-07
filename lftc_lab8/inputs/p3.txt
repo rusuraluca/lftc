@@ -1,23 +1,23 @@
 program
 START
 	int number = 251;
-	int ~isprime = 1;
+	int is_prime = 1;
 	if (number == 1 || number == 0) {
-		~isprime = 0;
+		is_prime = 0;
 		finish;
 	}
 	if number == 2 {
 		finish;
 	}
 	if number % 2 == 0 {
-		~isprime = 0;
+		is_prime = 0;
 		finish;
 	}
 	int div;
 	div = 3;
 	while (div * div <= number) {
 		if number % div == 0 {
-			~isprime = 0;
+			is_prime = 0;
 			finish;
 		}
 		div += 2;

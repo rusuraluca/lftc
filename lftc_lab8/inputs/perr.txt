@@ -1,5 +1,5 @@
 program
 START
-	3number =.+ number;
-	print(3number);
+	7number =.+ number;
+	print(7number);
 END

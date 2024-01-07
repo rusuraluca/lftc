@@ -1,14 +1,13 @@
 program
 START
-	list a int[20];
-	int minim = a[0];
+	list v int[20];
+	int minim = v[0];
 	int id = 0;
 	while (id < 20) {
-		if (a[i] < minim) {
-			minim = a[i];
+		if (v[i] < minim) {
+			minim = v[i];
 		}
 	}
-	out(minim);
-
+	write(minim);
 END
 
